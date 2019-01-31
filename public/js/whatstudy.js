@@ -44,7 +44,10 @@ function tokenSuccess(token) {
      * Alert for name of user
      */
     alert(voorNaam + " " + achterNaam + " " + studentNummer);
-}
+    var WelkomsMelding = getElementById("naam");
+
+    WelkomsMelding.innerHTML = "welkom" +(token.name.first + " " + token.name.last);
+
 
 function tokenError(message) {
     console.log(message);
@@ -53,6 +56,7 @@ function tokenError(message) {
      */
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
+
 
 
 
