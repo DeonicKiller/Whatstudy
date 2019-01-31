@@ -55,7 +55,7 @@ function tokenError(message) {
 }
 
 
-getToken();
 
 // initialize
 addButtonActions();
+getToken();
