@@ -1,4 +1,4 @@
-"use strict";
+
 
 /**
  * Add actions to page buttons 
@@ -37,12 +37,21 @@ function errorRooms(statusCode, errorMessage) {
 
 function tokenSuccess(token) {
     console.log(token);
-    // Do something with the token
+    var voorNaam = token.name.first;
+    var achterNaam = token.name.last;
+    var studentNummer = token.id;
+    /**
+     * Alert for name of user
+     */
+    alert(voorNaam + " " + achterNaam + " " + studentNummer);
 }
 
 function tokenError(message) {
     console.log(message);
-    // Do something with the message
+    /**
+     * Error alert Pls login
+     */
+    alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 
 
