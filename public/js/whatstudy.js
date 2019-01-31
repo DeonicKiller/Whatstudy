@@ -35,5 +35,18 @@ function errorRooms(statusCode, errorMessage) {
     console.log(errorMessage);
 }
 
+function tokenSuccess(token) {
+    console.log(token);
+    // Do something with the token
+}
+
+function tokenError(message) {
+    console.log(message);
+    // Do something with the message
+}
+
+
+getToken();
+
 // initialize
 addButtonActions();
