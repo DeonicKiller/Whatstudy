@@ -1,4 +1,44 @@
+/**
+ * Globale var's
+ */
+var voorNaam;
+var achterNaam;
+var studentNummer;
+var token;
 
+function fetchMessages (){
+    token = token;
+    var myApi = new Api('GET', 'rooms/messages/check/' + token, null);
+    myApi.execute(showMessages, showMessagesFailed,);
+}
+
+// Show Alle berichten
+function showMessages(response) {
+    // User 1
+    var user_id0 = document.getElementById("userid-0");
+    var room_id0 = document.getElementById("roomid-0");
+    var description0 = document.getElementById("description-0");
+
+    user_id0.innerHTML = response[0].user_id;
+    room_id0.innerHTML = response[0].room_id;
+    description0.innerHTML = response[0].description;
+
+    // User 2
+    var user_id1 = document.getElementById("userid-0");
+    var room_id1 = document.getElementById("roomid-0");
+    var description1 = document.getElementById("description-0");
+
+    user_id1.innerHTML = response[1].user_id;
+    room_id1.innerHTML = response[1].room_id;
+    description1.innerHTML = response[1].description;
+
+
+}
+
+// Fout bericht als de berichten niet worden opgehaald
+function showMessagesFailed() {
+alert("Het ophalen van de berichten is niet gelukt");
+}
 
 /**
  * Add actions to page buttons 
@@ -12,11 +52,12 @@ function addButtonActions() {
 
 }
 
+
 /*
  * fetch Rooms throught Api
  */
 function fetchRooms() {
-    var token = "259a7abd9185e783b791029864c2be6be6d17f18a1c094ec";
+    var token = token;
     var myApi = new Api('GET', 'rooms/check/' + token, null);
     myApi.execute(showRooms, errorRooms);
 }
@@ -37,20 +78,24 @@ function errorRooms(statusCode, errorMessage) {
 
 function tokenSuccess(token) {
     console.log(token);
-    var voorNaam = token.name.first;
-    var achterNaam = token.name.last;
-    var studentNummer = token.id;
+    voorNaam = token.name.first;
+    achterNaam = token.name.last;
+    studentNummer = token.id;
+
     /**
      * Alert for name of user
      */
-    alert(voorNaam + " " + achterNaam + " " + studentNummer);
-    var WelkomsMelding = getElementById("naam");
+    var WelkomsMelding = document.getElementById("naam");
+    var studentNummerinl = document.getElementById("studentnummer")
+    WelkomsMelding.innerHTML = "welkom" + " " + (voorNaam + " " + achterNaam);
+    studentNummerinl.innerHTML = (studentNummer);
 
-    WelkomsMelding.innerHTML = "welkom" +(token.name.first + " " + token.name.last);
 
+}
 
 function tokenError(message) {
     console.log(message);
+
     /**
      * Error alert Pls login
      */
@@ -58,8 +103,7 @@ function tokenError(message) {
 }
 
 
-
-
 // initialize
 addButtonActions();
 getToken();
+fetchMessages();
