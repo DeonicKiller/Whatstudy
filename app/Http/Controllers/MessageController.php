@@ -8,6 +8,20 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+     /**
+      * Return the list of Messages
+      * @return Illuminate\Http\Response
+      */
     public function showAllMessages($token)
     {
         if (!Token::check($token)) {
@@ -18,7 +32,10 @@ class MessageController extends Controller
        
        return response()->json($messages);
     }
-    
+    /**
+     * Show one Message
+     * @return Illuminate\Http\Response
+     */
     public function showMessage($messageId)
     {
         if (!Token::check($token)) {
@@ -28,7 +45,10 @@ class MessageController extends Controller
             $message = Message::findOrFail($messageId);
             return response()->json($message);
         }
-        
+     /**
+     * Create a message
+     * @return Illuminate\Http\Response
+     */   
     public function createMessage(Request $request)
     {
         if (!Token::check($token)) {

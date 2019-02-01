@@ -1,21 +1,21 @@
 /**
  * Globale var's
  */
-var voorNaam;
-var achterNaam;
-var studentNummer;
-var token = null;
 var getAPI    = new Api("GET");
 var postAPI   = new Api("POST");
 var putAPI    = new Api("PUT");
 var deleteAPI = new Api("DELETE");
+var voorNaam;
+var achterNaam;
+var studentNummer;
+var codeToken = null;
 
 function tokenSuccess(token) {
     console.log(token);
     voorNaam = token.name.first;
     achterNaam = token.name.last;
     studentNummer = token.id;
-    token = token;
+    codeToken = token;
     
 
     /**
@@ -27,10 +27,17 @@ function tokenSuccess(token) {
     studentNummerinl.innerHTML = (studentNummer);
 }
 
-/*function fetchMessages (){
-    var myGetApi = new Api('GET', 'rooms/messages/check/' + token, null);
-    myGetApi.execute(showMessages, showMessagesFailed);
-}*/
+function fetchMessages ()
+{
+    if (codeToken)
+    {
+    getAPI.route = 'messages/check/' + codeToken.token;
+    getAPI.data = null;
+}
+getAPI.execute(showMessages, showMessagesFailed);
+}
+
+
 
 // Show Alle berichten
 function showMessages(response) {
@@ -78,13 +85,14 @@ function addButtonActions() {
  */
 function fetchRooms() 
 {
-    if (token)
+    if (codeToken)
     {
-        getAPI.route = 'rooms/check/' +token.token;
-        getAPI.data = null;
+        getAPI.route = "rooms/check/" + codeToken.token;
+        getAPI.data  = null;
     }
     getAPI.execute(showRooms, errorRooms);
 }
+
 
 /*
  * show recieved Rooms
@@ -112,10 +120,7 @@ function tokenError(message) {
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 
-function getToken() {
-    token = document.createElement("script");
-    token.src ="https://epic.clow.nl/token?callback=tokenReceived";   
-}
+
 
 
 // initialize
