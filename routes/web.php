@@ -18,6 +18,6 @@ Route::get('/', function () {
 // RoomController
 $router->get('rooms/check/{token}', ['uses' => 'RoomController@showAllRooms']);
 // MessageController
-$router->get('rooms/messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
-$router->get('rooms/messages/check/{token}', ['uses' => 'MessageController@showMessage']);
-$router->get('rooms/messages/check/{token}', ['uses' => 'MessageController@createMessage']);
+$router->get('messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
+$router->get('messages/check/{token}', ['uses' => 'MessageController@showMessage']);
+$router->get('messages/check/{token}', ['uses' => 'MessageController@createMessage']);

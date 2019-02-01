@@ -4,13 +4,33 @@
 var voorNaam;
 var achterNaam;
 var studentNummer;
-var token;
+var token = null;
+var getAPI    = new Api("GET");
+var postAPI   = new Api("POST");
+var putAPI    = new Api("PUT");
+var deleteAPI = new Api("DELETE");
 
-function fetchMessages (){
+function tokenSuccess(token) {
+    console.log(token);
+    voorNaam = token.name.first;
+    achterNaam = token.name.last;
+    studentNummer = token.id;
     token = token;
-    var myApi = new Api('GET', 'rooms/messages/check/' + token, null);
-    myApi.execute(showMessages, showMessagesFailed,);
+    
+
+    /**
+     * Alert for name of user
+     */
+    var WelkomsMelding = document.getElementById("naam");
+    var studentNummerinl = document.getElementById("studentnummer");
+    WelkomsMelding.innerHTML = "welkom" + " " + (voorNaam + " " + achterNaam);
+    studentNummerinl.innerHTML = (studentNummer);
 }
+
+/*function fetchMessages (){
+    var myGetApi = new Api('GET', 'rooms/messages/check/' + token, null);
+    myGetApi.execute(showMessages, showMessagesFailed);
+}*/
 
 // Show Alle berichten
 function showMessages(response) {
@@ -56,11 +76,16 @@ function addButtonActions() {
 /*
  * fetch Rooms throught Api
  */
-function fetchRooms() {
-    var token = token;
-    var myApi = new Api('GET', 'rooms/check/' + token, null);
-    myApi.execute(showRooms, errorRooms);
+function fetchRooms() 
+{
+    if (token)
+    {
+        getAPI.route = 'rooms/check/' +token.token;
+        getAPI.data = null;
+    }
+    getAPI.execute(showRooms, errorRooms);
 }
+
 /*
  * show recieved Rooms
  */
@@ -76,22 +101,7 @@ function errorRooms(statusCode, errorMessage) {
     console.log(errorMessage);
 }
 
-function tokenSuccess(token) {
-    console.log(token);
-    voorNaam = token.name.first;
-    achterNaam = token.name.last;
-    studentNummer = token.id;
 
-    /**
-     * Alert for name of user
-     */
-    var WelkomsMelding = document.getElementById("naam");
-    var studentNummerinl = document.getElementById("studentnummer")
-    WelkomsMelding.innerHTML = "welkom" + " " + (voorNaam + " " + achterNaam);
-    studentNummerinl.innerHTML = (studentNummer);
-
-
-}
 
 function tokenError(message) {
     console.log(message);
@@ -102,8 +112,13 @@ function tokenError(message) {
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 
+function getToken() {
+    token = document.createElement("script");
+    token.src ="https://epic.clow.nl/token?callback=tokenReceived";   
+}
+
 
 // initialize
 addButtonActions();
 getToken();
-fetchMessages();
+//fetchMessages();
