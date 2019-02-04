@@ -32,22 +32,40 @@ function tokenSuccess(token) {
 // Show Alle berichten
 function showMessages(response) {
     // User 1
-    var user_id0 = document.getElementById("userid-0");
-    var room_id0 = document.getElementById("roomid-0");
-    var description0 = document.getElementById("description-0");
+   var user_id0 = document.getElementById("userid-0");
+   var room_id0 = document.getElementById("roomid-0");
+   var description0 = document.getElementById("description-0");
 
     user_id0.innerHTML = response[0].user_id;
     room_id0.innerHTML = response[0].room_id;
     description0.innerHTML = response[0].description;
 
     // User 2
-    var user_id1 = document.getElementById("userid-0");
-    var room_id1 = document.getElementById("roomid-0");
-    var description1 = document.getElementById("description-0");
+   var user_id1 = document.getElementById("userid-1");
+   var room_id1 = document.getElementById("roomid-1");
+   var description1 = document.getElementById("description-1");
 
-    user_id1.innerHTML = response[1].user_id;
-    room_id1.innerHTML = response[1].room_id;
-    description1.innerHTML = response[1].description;
+   user_id1.innerHTML = response[1].user_id;
+   room_id1.innerHTML = response[1].room_id;
+   description1.innerHTML = response[1].description;
+
+    // User 3
+    var user_id2 = document.getElementById("userid-2");
+    var room_id2 = document.getElementById("roomid-2");
+    var description2 = document.getElementById("descrption-2");
+
+    user_id2.innerHTML = response[1].user_id;
+    room_id2.innerHTML = response[1].room_id;
+    description2.innerHTML = response[1].description;
+
+    // User 4
+    var user_id3 = document.getElementById("userid-3");
+    var room_id3 = document.getElementById("roomid-3");
+    var description3 = document.getElementById("description-3");
+
+    user_id3.innerHTML = response[1].user_id;
+    room_id3.innerHTML = response[1].room_id;
+    description3.innerHTML = response[1].description;
 
 
 }
@@ -133,6 +151,10 @@ function messagesFix() {
         alert ('Login')
     } 
 }
+
+for (i = 0; i < 5; i++) {
+    
+  }
 
 
 
