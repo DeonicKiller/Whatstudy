@@ -9,7 +9,7 @@ var voorNaam;
 var achterNaam;
 var studentNummer;
 var codeToken = null;
-var valideToken = false;
+//var valideToken = false;
 
 
 function tokenSuccess(token) {
@@ -18,7 +18,7 @@ function tokenSuccess(token) {
     achterNaam = token.name.last;
     studentNummer = token.id;
     codeToken = token;
-    valideToken = true;
+    //valideToken = true;
     
     /**
      * Alert for name of user
@@ -31,43 +31,23 @@ function tokenSuccess(token) {
 
 // Show Alle berichten
 function showMessages(response) {
-    // User 1
-   var user_id0 = document.getElementById("userid-0");
-   var room_id0 = document.getElementById("roomid-0");
-   var description0 = document.getElementById("description-0");
+    
+    if (Array.isArray(response)){
+    response.forEach(function (value, key) {
+   var user_id0 = document.getElementById(("user_id-" + (key + 1)));
+   var room_id0 = document.getElementById(("room_id-" + (key + 1)));
+   var description0 = document.getElementById(("description-" + (key + 1)));
 
-    user_id0.innerHTML = response[0].user_id;
-    room_id0.innerHTML = response[0].room_id;
-    description0.innerHTML = response[0].description;
+   var user_id = value.user_id;
+   var room_id = value.room_id;
+   var description = value.description;
 
-    // User 2
-   var user_id1 = document.getElementById("userid-1");
-   var room_id1 = document.getElementById("roomid-1");
-   var description1 = document.getElementById("description-1");
-
-   user_id1.innerHTML = response[1].user_id;
-   room_id1.innerHTML = response[1].room_id;
-   description1.innerHTML = response[1].description;
-
-    // User 3
-    var user_id2 = document.getElementById("userid-2");
-    var room_id2 = document.getElementById("roomid-2");
-    var description2 = document.getElementById("descrption-2");
-
-    user_id2.innerHTML = response[1].user_id;
-    room_id2.innerHTML = response[1].room_id;
-    description2.innerHTML = response[1].description;
-
-    // User 4
-    var user_id3 = document.getElementById("userid-3");
-    var room_id3 = document.getElementById("roomid-3");
-    var description3 = document.getElementById("description-3");
-
-    user_id3.innerHTML = response[1].user_id;
-    room_id3.innerHTML = response[1].room_id;
-    description3.innerHTML = response[1].description;
-
-
+    user_id0.innerHTML = user_id;
+    room_id0.innerHTML = room_id;
+    description0.innerHTML = description;
+    
+});
+}
 }
 
 // Fout bericht als de berichten niet worden opgehaald
@@ -79,11 +59,29 @@ alert("Het ophalen van de berichten is niet gelukt");
  * Add actions to page buttons 
  */
 function addButtonActions() {
-    var test = document.getElementById('test');
-
-    test.addEventListener("click", function () {
+    var MessagesOphalen = document.getElementById('messagesOphalen');
+    var roomsOphalen = document.getElementById('roomsOphalen');
+    var publicPage = document.getElementById("public_Name");
+    var homePage = document.getElementById("home_Page");
+    var roomsPage = document.getElementById("rooms_Page");
+    
+    MessagesOphalen.addEventListener("click", function () {
         fetchMessages();
     });
+
+    publicPage.addEventListener("click", function() {
+        showPublicPage();
+    });
+
+    homePage.addEventListener("click", function() {
+        showHomePage();
+    });
+
+    roomsPage.addEventListener("click", function() {
+        fetchRooms();
+    });
+
+
 
 }
 
@@ -132,7 +130,7 @@ function errorRooms(statusCode, errorMessage) {
 
 function tokenError(message) {
     console.log(message);
-    valideToken = false;
+    //valideToken = false;
 
     /**
      * Error alert Pls login
@@ -140,10 +138,39 @@ function tokenError(message) {
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 
+function hideAllPages(){
+var publicPage = document.getElementById("publicRoomPage");
+var homePage = document.getElementById('homePage');
+
+publicPage.style.display = 'none';
+homePage.style.display = 'none';
+}
+
+//test
+function showHomePage() {
+    var homePage = document.getElementById('homePage');
+    homePage.style.display = 'block';
+
+    hideAllPages();
+
+    homePage.style.display = 'block';
+}
+
+function showPublicPage() {
+    var page = document.getElementById('publicRoomPage');
+
+    hideAllPages();
+
+    page.style.display = 'block';
+}
+
+
+
+
 /**
  * Nog proberen te fixen werkt niet
  */
-function messagesFix() {
+/*function messagesFix() {
     
     if (valideToken) {
         fetchMessages
@@ -151,14 +178,10 @@ function messagesFix() {
         alert ('Login')
     } 
 }
-
-for (i = 0; i < 5; i++) {
-    
-  }
-
+*/
 
 
 // initialize
+showHomePage();
 addButtonActions();
 getToken();
-
