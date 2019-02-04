@@ -83,3 +83,7 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+#studentnummer {
+margin-left: 55px;
+}

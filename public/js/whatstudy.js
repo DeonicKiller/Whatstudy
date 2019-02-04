@@ -60,7 +60,6 @@ alert("Het ophalen van de berichten is niet gelukt");
  */
 function addButtonActions() {
     var MessagesOphalen = document.getElementById('messagesOphalen');
-    var roomsOphalen = document.getElementById('roomsOphalen');
     var publicPage = document.getElementById("public_Name");
     var homePage = document.getElementById("home_Page");
     var roomsPage = document.getElementById("rooms_Page");
@@ -118,7 +117,6 @@ function fetchRooms()
 function showRooms(response) {
     console.log(response);
 }
-
 
 /*
  * error fetching Rooms
