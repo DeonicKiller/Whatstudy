@@ -15,9 +15,10 @@ Route::get('/', function () {
     return redirect('index.html');
 
 });
+
 // RoomController
-$router->get('rooms/check/{token}', ['uses' => 'RoomController@showAllRooms']);
+//$router->get('rooms/check/{token}', ['uses' => 'RoomController@showAllRooms']);
 // MessageController
-$router->get('messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
+/*$router->get('messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
 $router->get('messages/check/{token}', ['uses' => 'MessageController@showMessage']);
-$router->get('messages/check/{token}', ['uses' => 'MessageController@createMessage']);
+$router->get('messages/check/{token}' , ['uses' => 'MessageController@createMessage']);*/

@@ -36,13 +36,13 @@ class MessageController extends Controller
      * Show one Message
      * @return Illuminate\Http\Response
      */
-    public function showMessage($messageId)
+    public function showMessage($id, $token)
     {
         if (!Token::check($token)) {
             return response()->json('Unauthorized token', 401);
         
         }
-            $message = Message::findOrFail($messageId);
+            $message = Message::findOrFail($id);
             return response()->json($message);
         }
      /**

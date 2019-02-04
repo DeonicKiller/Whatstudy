@@ -9,6 +9,8 @@ var voorNaam;
 var achterNaam;
 var studentNummer;
 var codeToken = null;
+var valideToken = false;
+
 
 function tokenSuccess(token) {
     console.log(token);
@@ -16,8 +18,8 @@ function tokenSuccess(token) {
     achterNaam = token.name.last;
     studentNummer = token.id;
     codeToken = token;
+    valideToken = true;
     
-
     /**
      * Alert for name of user
      */
@@ -26,18 +28,6 @@ function tokenSuccess(token) {
     WelkomsMelding.innerHTML = "welkom" + " " + (voorNaam + " " + achterNaam);
     studentNummerinl.innerHTML = (studentNummer);
 }
-
-function fetchMessages ()
-{
-    if (codeToken)
-    {
-    getAPI.route = 'messages/check/' + codeToken.token;
-    getAPI.data = null;
-}
-getAPI.execute(showMessages, showMessagesFailed);
-}
-
-
 
 // Show Alle berichten
 function showMessages(response) {
@@ -74,11 +64,23 @@ function addButtonActions() {
     var test = document.getElementById('test');
 
     test.addEventListener("click", function () {
-        fetchRooms();
+        fetchMessages();
     });
 
 }
 
+/**
+ *  fetch Messages trought Api
+ */
+function fetchMessages ()
+{
+    if (codeToken)
+    {
+    getAPI.route = "messages/check/" + codeToken.token;
+    getAPI.data = null;
+    }
+    getAPI.execute(showMessages, showMessagesFailed);
+}
 
 /*
  * fetch Rooms throught Api
@@ -101,6 +103,7 @@ function showRooms(response) {
     console.log(response);
 }
 
+
 /*
  * error fetching Rooms
  */
@@ -109,10 +112,9 @@ function errorRooms(statusCode, errorMessage) {
     console.log(errorMessage);
 }
 
-
-
 function tokenError(message) {
     console.log(message);
+    valideToken = false;
 
     /**
      * Error alert Pls login
@@ -120,10 +122,21 @@ function tokenError(message) {
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 
+/**
+ * Nog proberen te fixen werkt niet
+ */
+function messagesFix() {
+    
+    if (valideToken) {
+        fetchMessages
+    } else {
+        alert ('Login')
+    } 
+}
 
 
 
 // initialize
 addButtonActions();
 getToken();
-//fetchMessages();
+

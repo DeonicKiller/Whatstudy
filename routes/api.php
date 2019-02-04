@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// RoomController
+$router->get('rooms/check/{token}', ['uses' => 'RoomController@showAllRooms']);
+// MessageController
+$router->get('messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
+$router->get('messages/{id}/check/{token}', ['uses' => 'MessageController@showMessage']);
+$router->post('messages/check/{token}' , ['uses' => 'MessageController@createMessage']);
