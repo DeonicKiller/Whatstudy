@@ -24,9 +24,24 @@ body {
     flex-grow: 1;
 }
 
+#publicRoomPage {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border: 3px solid;
+    border-radius: 20px;
+    margin: 35px;
+    padding: 400px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #333;
+  width: 1000px;
 }
 
 .navbar a {
@@ -36,7 +51,9 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  
 }
+  
 
 .dropdown {
   float: left;
@@ -73,7 +90,7 @@ body {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  text-align: left;
+  text-align: center;
 }
 
 .dropdown-content a:hover {

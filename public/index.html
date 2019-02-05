@@ -28,13 +28,36 @@
 
             <p id="studentnummer"></p>
             <p id="naam"></p>
-            
+
+        </div>
+    </div>
+    
+    <div class="navbar">
+        <a id= "home_Page">Home</a>
+        <a id="rooms_Page">Rooms Ophalen</a>
+        <!--Moet uiteindelijk weg--><a id="messagesOphalen">Messages Ophalen</a>
+        <div class="dropdown">
+            <button class="dropbtn">Rooms
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a id="public_Name">Publ</a>
+                <a id="html/css_Name">HTML/CSS</a>
+                <a id="javascript_Name">Javascipt</a>
+                <a href="#">Laravel/Lumen</a>
+                <a href="#">Fitnesse</a>
+                <a href="#">MySQl</a>
+                <a href="#">Vue.js</a>
+                <a href="#">Git</a>
+                <a href="#">Installation</a>
+                <a href="#">Bootstrap</a>
+            </div>
         </div>
     </div>
 
     <div id="publicRoomPage">
         <!--Hier komt de Public page-->
-        <p>DIT IS EEN TEST</p>
+        
         <!--User 0-->
         <p id="userid-0"></p>
         <p id="roomid-0"></p>
@@ -135,6 +158,7 @@
         <p id="roomid-19"></p>
         <p id="description-19"></p>
 
+        <input style="float:right" type="text" required placeholder="Messages" id="messagesInput" size="30">
     </div>
     </div>
 
@@ -176,28 +200,6 @@
 
     <!-- jQuery first, then Bootstrap JS -->
 
-    <div class="navbar">
-        <a id= "home_Page">Home</a>
-        <a id="rooms_Page">Rooms Ophalen</a>
-        <!--Moet uiteindelijk weg--><a id="messagesOphalen">Messages Ophalen</a>
-        <div class="dropdown">
-            <button class="dropbtn">Rooms
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a id="public_Name">Public</a>
-                <a id="html/css_Name">HTML/CSS</a>
-                <a id="javascript_Name">Javascipt</a>
-                <a href="#">Laravel/Lumen</a>
-                <a href="#">Fitnesse</a>
-                <a href="#">MySQl</a>
-                <a href="#">Vue.js</a>
-                <a href="#">Git</a>
-                <a href="#">Installation</a>
-                <a href="#">Bootstrap</a>
-            </div>
-        </div>
-    </div>
 
     <script src="https://ori.clow.nl/cdn/jquery/3.3.1/jquery-3.3.1.min.js"></script>
     <script src="https://ori.clow.nl/cdn/bootstrap/4.2.1/js/bootstrap.min.js"></script>

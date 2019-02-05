@@ -1,9 +1,9 @@
 /**
  * Globale var's
  */
-var getAPI    = new Api("GET");
-var postAPI   = new Api("POST");
-var putAPI    = new Api("PUT");
+var getAPI = new Api("GET");
+var postAPI = new Api("POST");
+var putAPI = new Api("PUT");
 var deleteAPI = new Api("DELETE");
 var voorNaam;
 var achterNaam;
@@ -19,7 +19,7 @@ function tokenSuccess(token) {
     studentNummer = token.id;
     codeToken = token;
     //valideToken = true;
-    
+
     /**
      * Alert for name of user
      */
@@ -31,28 +31,21 @@ function tokenSuccess(token) {
 
 // Show Alle berichten
 function showMessages(response) {
-    
-    if (Array.isArray(response)){
-    response.forEach(function (value, key) {
-   var user_id0 = document.getElementById(("user_id-" + (key + 1)));
-   var room_id0 = document.getElementById(("room_id-" + (key + 1)));
-   var description0 = document.getElementById(("description-" + (key + 1)));
 
-   var user_id = value.user_id;
-   var room_id = value.room_id;
-   var description = value.description;
+    var userId = document.getElementById("userid-0");
+    var roomId = document.getElementById("roomid-0");
+    var description = document.getElementById("description-0");
+      
+      userId.innerHTML = response[0].user_id;
+      roomId.innerHTML = response[0].room_id;
+      description.innerHTML = response[0].description;
+  
 
-    user_id0.innerHTML = user_id;
-    room_id0.innerHTML = room_id;
-    description0.innerHTML = description;
-    
-});
-}
 }
 
 // Fout bericht als de berichten niet worden opgehaald
 function showMessagesFailed() {
-alert("Het ophalen van de berichten is niet gelukt");
+    alert("Het ophalen van de berichten is niet gelukt");
 }
 
 /**
@@ -63,21 +56,26 @@ function addButtonActions() {
     var publicPage = document.getElementById("public_Name");
     var homePage = document.getElementById("home_Page");
     var roomsPage = document.getElementById("rooms_Page");
-    
+    var publicName = document.getElementById("public_Name")
+
     MessagesOphalen.addEventListener("click", function () {
         fetchMessages();
     });
 
-    publicPage.addEventListener("click", function() {
+    publicPage.addEventListener("click", function () {
         showPublicPage();
     });
 
-    homePage.addEventListener("click", function() {
+    homePage.addEventListener("click", function () {
         showHomePage();
     });
 
-    roomsPage.addEventListener("click", function() {
+    roomsPage.addEventListener("click", function () {
         fetchRooms();
+    });
+
+    publicName.addEventListener("click", function () {
+        fetchMessages();
     });
 
 
@@ -87,12 +85,10 @@ function addButtonActions() {
 /**
  *  fetch Messages trought Api
  */
-function fetchMessages ()
-{
-    if (codeToken)
-    {
-    getAPI.route = "messages/check/" + codeToken.token;
-    getAPI.data = null;
+function fetchMessages() {
+    if (codeToken) {
+        getAPI.route = "messages/check/" + codeToken.token;
+        getAPI.data = null;
     }
     getAPI.execute(showMessages, showMessagesFailed);
 }
@@ -100,12 +96,10 @@ function fetchMessages ()
 /*
  * fetch Rooms throught Api
  */
-function fetchRooms() 
-{
-    if (codeToken)
-    {
+function fetchRooms() {
+    if (codeToken) {
         getAPI.route = "rooms/check/" + codeToken.token;
-        getAPI.data  = null;
+        getAPI.data = null;
     }
     getAPI.execute(showRooms, errorRooms);
 }
@@ -136,12 +130,12 @@ function tokenError(message) {
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 
-function hideAllPages(){
-var publicPage = document.getElementById("publicRoomPage");
-var homePage = document.getElementById('homePage');
+function hideAllPages() {
+    var publicPage = document.getElementById("publicRoomPage");
+    var homePage = document.getElementById('homePage');
 
-publicPage.style.display = 'none';
-homePage.style.display = 'none';
+    publicPage.style.display = 'none';
+    homePage.style.display = 'none';
 }
 
 //test
@@ -162,9 +156,6 @@ function showPublicPage() {
     page.style.display = 'block';
 }
 
-
-
-
 /**
  * Nog proberen te fixen werkt niet
  */
@@ -178,8 +169,20 @@ function showPublicPage() {
 }
 */
 
+/*var xHttp = new XMLHttpRequest();
+xHttp.onreadystatechange = function () {
+    if (xHttp.readyState == XMLHttpRequest.DONE) {
+        if (xHttp.status == 200 || xHttp.status == 201) {
+            var response = JSON.parse(xHttp.response);
+            room_Names(response);
+        }
+    }
+};
+*/
+
 
 // initialize
 showHomePage();
 addButtonActions();
 getToken();
+//room_Names(response);
