@@ -33,44 +33,55 @@ function tokenSuccess(token) {
 function showMessages(response) {
 
     var userId = document.getElementById("userid-0");
-    var roomId = document.getElementById("roomid-0");
     var description = document.getElementById("description-0");
+    var time = document.getElementById("time-0");
+    var name =document.getElementById("name-0");
 
     userId.innerHTML = response[0].user_id;
-    roomId.innerHTML = response[0].room_id;
+    time.innerHTML ="(" + response[0].created_at + ")";
     description.innerHTML = response[0].description;
+    name.innerHTML = (voorNaam + " " + achterNaam);
 
     var userId = document.getElementById("userid-1");
-    var roomId = document.getElementById("roomid-1");
     var description = document.getElementById("description-1");
-
+    var time = document.getElementById("time-1");
+    var name =document.getElementById("name-1");
+    
     userId.innerHTML = response[1].user_id;
-    roomId.innerHTML = response[1].room_id;
+    time.innerHTML ="(" + response[1].created_at + ")";
     description.innerHTML = response[1].description;
+    name.innerHTML = (voorNaam + " " + achterNaam);
 
     var userId = document.getElementById("userid-2");
-    var roomId = document.getElementById("roomid-2");
     var description = document.getElementById("description-2");
+    var time = document.getElementById("time-2");
+    var name =document.getElementById("name-2");
 
     userId.innerHTML = response[2].user_id;
-    roomId.innerHTML = response[2].room_id;
+    time.innerHTML ="(" + response[2].created_at + ")";
     description.innerHTML = response[2].description;
-
+    name.innerHTML = (voorNaam + " " + achterNaam);
+    
     var userId = document.getElementById("userid-3");
-    var roomId = document.getElementById("roomid-3");
     var description = document.getElementById("description-3");
+    var time = document.getElementById("time-3");
+    var name =document.getElementById("name-3");
 
     userId.innerHTML = response[3].user_id;
-    roomId.innerHTML = response[3].room_id;
+    time.innerHTML ="(" + response[3].created_at + ")";
     description.innerHTML = response[3].description;
+    name.innerHTML = (voorNaam + " " + achterNaam);
 
     var userId = document.getElementById("userid-4");
-    var roomId = document.getElementById("roomid-4");
     var description = document.getElementById("description-4");
+    var time = document.getElementById("time-4");
+    var name =document.getElementById("name-4");
 
     userId.innerHTML = response[4].user_id;
-    roomId.innerHTML = response[4].room_id;
+    time.innerHTML ="(" + response[4].created_at + ")";
     description.innerHTML = response[4].description;
+    name.innerHTML = (voorNaam + " " + achterNaam);
+
 
 
 }
