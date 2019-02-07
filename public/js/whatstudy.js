@@ -193,7 +193,9 @@ function showHomePage() {
 
 function showPublicPage() {
     var page = document.getElementById('publicRoomPage');
+   // var publicPage = document.getElementById('public_Name');
 
+   // publicPage.innerHTML = response[0].name;
     hideAllPages();
 
     page.style.display = 'block';

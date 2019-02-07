@@ -8,11 +8,12 @@ h1 {
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+    color: white;
 }
 
 body {
     display: flex;
-    background-color: #ccc;
+    background-color: rgb(27, 61, 173);
     margin: 0px;
     flex-direction: column;
     flex-wrap: wrap;
@@ -110,6 +111,11 @@ body {
 
 #studentnummer {
     margin-left: 55px;
+    color: white;
+}
+
+#naam {
+    color: white;
 }
 
 .m_Margins {
