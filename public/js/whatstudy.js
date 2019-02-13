@@ -1,23 +1,26 @@
 /**
  * Globale var's
  */
-var getAPI = new Api("GET");
+/*var getAPI = new Api("GET");
 var postAPI = new Api("POST");
 var putAPI = new Api("PUT");
-var deleteAPI = new Api("DELETE");
+var deleteAPI = new Api("DELETE");*/
 var voorNaam;
 var achterNaam;
 var studentNummer;
 var codeToken = null;
-//var valideToken = false;
-
+var localeResponsRooms;
+var messagesParentContainer = document.getElementById("publicRoomPage")
+var link_Epic = document.getElementById("link-epic")
 
 function tokenSuccess(token) {
-    console.log(token);
+    link_Epic.style.display= 'none';
     voorNaam = token.name.first;
     achterNaam = token.name.last;
     studentNummer = token.id;
     codeToken = token;
+    fetchRooms();
+
     //valideToken = true;
 
     /**
@@ -32,58 +35,42 @@ function tokenSuccess(token) {
 // Show Alle berichten
 function showMessages(response) {
 
-    var userId = document.getElementById("userid-0");
-    var description = document.getElementById("description-0");
-    var time = document.getElementById("time-0");
-    var name =document.getElementById("name-0");
+    for (var i = 0; i < response.length; i++) {
 
-    userId.innerHTML = response[0].user_id;
-    time.innerHTML ="(" + response[0].created_at + ")";
-    description.innerHTML = response[0].description;
-    name.innerHTML = (voorNaam + " " + achterNaam);
+        var messagesContainer = document.createElement("div");
+        messagesContainer.setAttribute("class", "messages");
 
-    var userId = document.getElementById("userid-1");
-    var description = document.getElementById("description-1");
-    var time = document.getElementById("time-1");
-    var name =document.getElementById("name-1");
-    
-    userId.innerHTML = response[1].user_id;
-    time.innerHTML ="(" + response[1].created_at + ")";
-    description.innerHTML = response[1].description;
-    name.innerHTML = (voorNaam + " " + achterNaam);
+        var messagesContaineruserid = document.createElement("p")
+        messagesContaineruserid.setAttribute("class", "user_id");
 
-    var userId = document.getElementById("userid-2");
-    var description = document.getElementById("description-2");
-    var time = document.getElementById("time-2");
-    var name =document.getElementById("name-2");
+        var messagesContainerdescription = document.createElement("p")
+        messagesContainerdescription.setAttribute("class", "text-right");
 
-    userId.innerHTML = response[2].user_id;
-    time.innerHTML ="(" + response[2].created_at + ")";
-    description.innerHTML = response[2].description;
-    name.innerHTML = (voorNaam + " " + achterNaam);
-    
-    var userId = document.getElementById("userid-3");
-    var description = document.getElementById("description-3");
-    var time = document.getElementById("time-3");
-    var name =document.getElementById("name-3");
+        var messagesContainername = document.createElement("p")
+        messagesContainername.setAttribute("class", "name");
 
-    userId.innerHTML = response[3].user_id;
-    time.innerHTML ="(" + response[3].created_at + ")";
-    description.innerHTML = response[3].description;
-    name.innerHTML = (voorNaam + " " + achterNaam);
+        var messagesContainertime = document.createElement("p");
+        messagesContainertime.setAttribute("class", "time");
 
-    var userId = document.getElementById("userid-4");
-    var description = document.getElementById("description-4");
-    var time = document.getElementById("time-4");
-    var name =document.getElementById("name-4");
+        //appends created containers into parent div 
+        messagesParentContainer.appendChild(messagesContainer);
+        messagesContainer.appendChild(messagesContaineruserid);
+        messagesContainer.appendChild(messagesContainerdescription);
+        messagesContainer.appendChild(messagesContainername);
+        messagesContainer.appendChild(messagesContainertime);
 
-    userId.innerHTML = response[4].user_id;
-    time.innerHTML ="(" + response[4].created_at + ")";
-    description.innerHTML = response[4].description;
-    name.innerHTML = (voorNaam + " " + achterNaam);
+        //populates every element with corresponding attribute from api
+        messagesContaineruserid.innerHTML = response[i].user_id;
+        messagesContainerdescription.innerHTML = response[i].description;
+        messagesContainername.innerHTML = (voorNaam + " " + achterNaam);
+        messagesContainertime.innerHTML = response[i].created_at;
 
+    } {
+        var inputMessages = document.createElement("input");
+        inputMessages.setAttribute("class", "input_messages")
 
-
+        messagesContainer.appendChild(inputMessages);
+    }
 }
 
 // Fout bericht als de berichten niet worden opgehaald
@@ -95,34 +82,17 @@ function showMessagesFailed() {
  * Add actions to page buttons 
  */
 function addButtonActions() {
-    var MessagesOphalen = document.getElementById('messagesOphalen');
-    var publicPage = document.getElementById("public_Name");
-    var homePage = document.getElementById("home_Page");
-    var roomsPage = document.getElementById("rooms_Page");
-    var publicName = document.getElementById("public_Name")
-
-    MessagesOphalen.addEventListener("click", function () {
-        fetchMessages();
-    });
-
-    publicPage.addEventListener("click", function () {
-        showPublicPage();
-    });
+    var publicPage = document.getElementById("public-name");
+    var homePage = document.getElementById("home_page");
 
     homePage.addEventListener("click", function () {
         showHomePage();
     });
 
-    roomsPage.addEventListener("click", function () {
-        fetchRooms();
-    });
-
-    publicName.addEventListener("click", function () {
+    publicPage.addEventListener("click", function () {
         fetchMessages();
+        showPublicPage();
     });
-
-
-
 }
 
 /**
@@ -130,21 +100,30 @@ function addButtonActions() {
  */
 function fetchMessages() {
     if (codeToken) {
-        getAPI.route = "messages/check/" + codeToken.token;
-        getAPI.data = null;
+        var myAPI = new Api("GET");
+        myAPI.route = "messages/check/" + codeToken.token;
+        myAPI.data = null;
+        myAPI.execute(showMessages, showMessagesFailed);
+    } else {
+        alert("Messages zijn er nog niet");
     }
-    getAPI.execute(showMessages, showMessagesFailed);
+
 }
 
 /*
  * fetch Rooms throught Api
  */
 function fetchRooms() {
+
     if (codeToken) {
-        getAPI.route = "rooms/check/" + codeToken.token;
-        getAPI.data = null;
+        var myAPI = new Api("GET");
+        myAPI.route = "rooms/check/" + codeToken.token;
+        myAPI.data = null;
+        myAPI.execute(showRooms, errorRooms);
+    } else {
+        alert("token is er niet")
     }
-    getAPI.execute(showRooms, errorRooms);
+
 }
 
 
@@ -152,7 +131,10 @@ function fetchRooms() {
  * show recieved Rooms
  */
 function showRooms(response) {
-    console.log(response);
+    localeResponsRooms = response;
+    console.log(localeResponsRooms);
+    showHomePage();
+    fillMenu();
 }
 
 /*
@@ -165,7 +147,6 @@ function errorRooms(statusCode, errorMessage) {
 
 function tokenError(message) {
     console.log(message);
-    //valideToken = false;
 
     /**
      * Error alert Pls login
@@ -179,12 +160,12 @@ function hideAllPages() {
 
     publicPage.style.display = 'none';
     homePage.style.display = 'none';
+
 }
 
 //test
 function showHomePage() {
     var homePage = document.getElementById('homePage');
-    homePage.style.display = 'block';
 
     hideAllPages();
 
@@ -193,41 +174,40 @@ function showHomePage() {
 
 function showPublicPage() {
     var page = document.getElementById('publicRoomPage');
-   // var publicPage = document.getElementById('public_Name');
+    var publicPage = document.getElementById('public-name');
 
-   // publicPage.innerHTML = response[0].name;
+
     hideAllPages();
 
     page.style.display = 'block';
+    publicPage.style.display = 'none';
 }
 
-/**
- * Nog proberen te fixen werkt niet
- */
-/*function messagesFix() {
-    
-    if (valideToken) {
-        fetchMessages
-    } else {
-        alert ('Login')
-    } 
+function fillMenu() {
+    var publicPage = document.getElementById('public-name');
+    var html_cssPage = document.getElementById("html/css_name");
+    var javascript_Page = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
+
+    publicPage.innerHTML = localeResponsRooms[0].name;
+    html_cssPage.innerHTML = localeResponsRooms[1].name;
+    javascript_Page.innerHTML = localeResponsRooms[2].name;
+    laravel_lumenPage.innerHTML = localeResponsRooms[3].name;
+    fitnesse_Page.innerHTML = localeResponsRooms[4].name;
+    mysql_Page.innerHTML = localeResponsRooms[5].name;
+    vue_jsPage.innerHTML = localeResponsRooms[6].name;
+    git_Page.innerHTML = localeResponsRooms[7].name;
+    installation_Page.innerHTML = localeResponsRooms[8].name;
+    bootstrap_Page.innerHTML = localeResponsRooms[9].name;
 }
-*/
-
-/*var xHttp = new XMLHttpRequest();
-xHttp.onreadystatechange = function () {
-    if (xHttp.readyState == XMLHttpRequest.DONE) {
-        if (xHttp.status == 200 || xHttp.status == 201) {
-            var response = JSON.parse(xHttp.response);
-            room_Names(response);
-        }
-    }
-};
-*/
-
 
 // initialize
-showHomePage();
 addButtonActions();
 getToken();
-//room_Names(response);
+hideAllPages();
