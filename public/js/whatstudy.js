@@ -14,7 +14,7 @@ var messagesParentContainer = document.getElementById("publicRoomPage")
 var link_Epic = document.getElementById("link-epic")
 
 function tokenSuccess(token) {
-    link_Epic.style.display= 'none';
+    link_Epic.style.display = 'none';
     voorNaam = token.name.first;
     achterNaam = token.name.last;
     studentNummer = token.id;
@@ -46,9 +46,6 @@ function showMessages(response) {
         var messagesContainerdescription = document.createElement("p")
         messagesContainerdescription.setAttribute("class", "text-right");
 
-        var messagesContainername = document.createElement("p")
-        messagesContainername.setAttribute("class", "name");
-
         var messagesContainertime = document.createElement("p");
         messagesContainertime.setAttribute("class", "time");
 
@@ -56,13 +53,11 @@ function showMessages(response) {
         messagesParentContainer.appendChild(messagesContainer);
         messagesContainer.appendChild(messagesContaineruserid);
         messagesContainer.appendChild(messagesContainerdescription);
-        messagesContainer.appendChild(messagesContainername);
         messagesContainer.appendChild(messagesContainertime);
 
         //populates every element with corresponding attribute from api
         messagesContaineruserid.innerHTML = response[i].user_id;
         messagesContainerdescription.innerHTML = response[i].description;
-        messagesContainername.innerHTML = (voorNaam + " " + achterNaam);
         messagesContainertime.innerHTML = response[i].created_at;
 
     } {
