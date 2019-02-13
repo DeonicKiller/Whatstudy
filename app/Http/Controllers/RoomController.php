@@ -14,7 +14,25 @@ class RoomController extends Controller
         if (!Token::check($token)) {
             return response()->json('Unauthorized token', 401);
         }
-
-        return response()->json(Room::all());
+        
+        {      
+            $rooms = Room::all();
+            foreach ($rooms as $room) {
+                $room->messages;
+            }      
+            return response()->json($rooms);
+        }
+    
     }
+    
+    public function showOneRoom(Room $room, $id)
+    {  
+
+        if (!Token::check($token)) {
+            return response()->json('Unauthorized token', 401);
+        }
+
+        return response()->json($room, $id);
+    }
+
 }

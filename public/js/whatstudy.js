@@ -56,9 +56,8 @@ function showMessages(response) {
         messagesContainer.appendChild(messagesContainertime);
 
         //populates every element with corresponding attribute from api
-        messagesContaineruserid.innerHTML = response[i].user_id;
+        messagesContaineruserid.innerHTML = response[i].created_at +  " " + response[i].user_id;
         messagesContainerdescription.innerHTML = response[i].description;
-        messagesContainertime.innerHTML = response[i].created_at;
 
     } {
         var inputMessages = document.createElement("input");

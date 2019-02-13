@@ -28,10 +28,16 @@ class MessageController extends Controller
         return response()->json('Unauthorized token', 401);
         
         }
-        $messages = Message::all();
-       
-       return response()->json($messages);
-    }
+        
+            $messages = Message::all();
+            foreach ($messages as $message) {
+                $message->user;
+                $message->room;
+            } 
+            return response()->json($messages);
+        }
+    
+    
     /**
      * Show one Message
      * @return Illuminate\Http\Response

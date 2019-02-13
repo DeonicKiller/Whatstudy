@@ -16,10 +16,9 @@ class Room extends Model
         'name', 
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [];
+    public function messages()
+    {
+        return $this->hasMany('App\Message');
+    }  
+
 }

@@ -18,8 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // RoomController
+
 $router->get('rooms/check/{token}', ['uses' => 'RoomController@showAllRooms']);
+$router->get('rooms/{room}/check/{token}', ['uses' => 'RoomController@showOneRoom']);
+
 // MessageController
 $router->get('messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
 $router->get('messages/{id}/check/{token}', ['uses' => 'MessageController@showMessage']);
 $router->post('messages/check/{token}' , ['uses' => 'MessageController@createMessage']);
+
+// UserController
+$router->get('users/check/{token}' , ['uses' => 'userController@showAllusers']);

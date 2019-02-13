@@ -18,10 +18,14 @@ class Message extends Model
         'description',
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [];
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function room()
+    {
+        return $this->belongsTo('App\Room');
+    }
+
 }
