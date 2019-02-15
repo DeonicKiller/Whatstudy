@@ -1,17 +1,13 @@
 /**
  * Globale var's
  */
-/*var getAPI = new Api("GET");
-var postAPI = new Api("POST");
-var putAPI = new Api("PUT");
-var deleteAPI = new Api("DELETE");*/
 var voorNaam;
 var achterNaam;
 var studentNummer;
 var codeToken = null;
 var localeResponsRooms;
-var messagesParentContainer = document.getElementById("publicRoomPage")
-var link_Epic = document.getElementById("link-epic")
+var messagesParentContainer = document.getElementById("publicRoomPage");
+var link_Epic = document.getElementById("link-epic");
 
 function tokenSuccess(token) {
     link_Epic.style.display = 'none';
@@ -20,8 +16,6 @@ function tokenSuccess(token) {
     studentNummer = token.id;
     codeToken = token;
     fetchRooms();
-
-    //valideToken = true;
 
     /**
      * Alert for name of user
@@ -33,18 +27,21 @@ function tokenSuccess(token) {
 }
 
 // Show Alle berichten
-function showMessages(response) {
+function showMessages(responsePage) {
 
-    for (var i = 0; i < response.length; i++) {
+    var response = responsePage.data;
+    console.info("Anntal Messages" + " " + response.length);
+
+    for (var i = response.length - 1; i > -1; i--) {
 
         var messagesContainer = document.createElement("div");
         messagesContainer.setAttribute("class", "messages");
 
-        var messagesContaineruserid = document.createElement("p")
+        var messagesContaineruserid = document.createElement("p");
         messagesContaineruserid.setAttribute("class", "user_id");
 
-        var messagesContainerdescription = document.createElement("p")
-        messagesContainerdescription.setAttribute("class", "text-right");
+        var messagesContainerdescription = document.createElement("p");
+        messagesContainerdescription.setAttribute("class", "description");
 
         var messagesContainertime = document.createElement("p");
         messagesContainertime.setAttribute("class", "time");
@@ -56,15 +53,22 @@ function showMessages(response) {
         messagesContainer.appendChild(messagesContainertime);
 
         //populates every element with corresponding attribute from api
-        messagesContaineruserid.innerHTML = response[i].created_at +  " " + response[i].user_id;
+        messagesContaineruserid.innerHTML = response[i].created_at + "," + " " + "(" + response[i].user_id + ")";
         messagesContainerdescription.innerHTML = response[i].description;
 
-    } {
-        var inputMessages = document.createElement("input");
-        inputMessages.setAttribute("class", "input_messages")
-
-        messagesContainer.appendChild(inputMessages);
     }
+
+    var inputContainer = document.createElement("input");
+    inputContainer.setAttribute("class", "input_messages");
+    inputContainer.setAttribute("placeholder", "Typ hier");
+
+    var buttonContainer = document.createElement("button");
+    buttonContainer.setAttribute("class", "button_send");
+    buttonContainer.setAttribute("id", "button-send");
+
+    messagesParentContainer.appendChild(inputContainer);
+    messagesParentContainer.appendChild(buttonContainer);
+
 }
 
 // Fout bericht als de berichten niet worden opgehaald
@@ -95,7 +99,7 @@ function addButtonActions() {
 function fetchMessages() {
     if (codeToken) {
         var myAPI = new Api("GET");
-        myAPI.route = "messages/check/" + codeToken.token;
+        myAPI.route = "rooms/1/messages/check/" + codeToken.token;
         myAPI.data = null;
         myAPI.execute(showMessages, showMessagesFailed);
     } else {
@@ -115,11 +119,24 @@ function fetchRooms() {
         myAPI.data = null;
         myAPI.execute(showRooms, errorRooms);
     } else {
-        alert("token is er niet")
+        alert("token is er niet");
     }
 
 }
 
+/*
+ * Post Message throught Api
+ */
+function postMessage() {
+
+    if (codeToken) {
+        var myPostAPI = new Api("POST");
+        myPostAPI.route = 'messages/check/' + codeToken.token;
+        myPostAPI.data = send;
+        myPostAPI.execute(postMessageSucces, errorPostMessage);
+    }
+
+}
 
 /*
  * show recieved Rooms
@@ -132,11 +149,24 @@ function showRooms(response) {
 }
 
 /*
+ * Post Message Succes
+ */
+function postMessageSucces(response) {
+
+}
+
+/*
  * error fetching Rooms
  */
 function errorRooms(statusCode, errorMessage) {
     console.log(statusCode);
     console.log(errorMessage);
+}
+
+function errorPostMessage(response) {
+    localeResponsRooms = response;
+    console.log(localeResponsRooms);
+    alert("Bericht versturen is niet gelukt, Probeer later nog eens");
 }
 
 function tokenError(message) {

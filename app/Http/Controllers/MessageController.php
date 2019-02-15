@@ -55,7 +55,7 @@ class MessageController extends Controller
      * Create a message
      * @return Illuminate\Http\Response
      */   
-    public function createMessage(Request $request)
+    public function createMessage(Request $request, $token)
     {
         if (!Token::check($token)) {
             return response()->json('Unauthorized token', 401);
@@ -72,6 +72,14 @@ class MessageController extends Controller
 
         return response()->json($message, 201);
     }
+
+    public function showOneMessage(Message $message, $token)
+    {      
+        $message->user;
+        $message->room;
+        return response()->json($message);
+    } 
+
 }
 
 

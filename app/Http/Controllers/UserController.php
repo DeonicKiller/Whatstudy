@@ -17,4 +17,14 @@ class UserController extends Controller
 
         return response()->json(User::all());
     }
+
+    public function showOneUser(User $user, $token)
+    {      
+        if (!Token::check($token)) {
+            return response()->json('Unauthorized token', 401);
+        }
+        
+        return response()->json($user);
+    } 
+
 }

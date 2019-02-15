@@ -13,9 +13,9 @@ body {
     background-color: rgb(255, 255, 255);
     border: 3px solid;
     border-radius: 20px;
-    margin: 0px;
+    margin: auto;
+    padding: 50px;
     width: 80%;
-    margin-left: 11%;
 }
 
 #windesheim_logo {
@@ -28,13 +28,12 @@ body {
 }
 
 .user_id {
-    display: inline;
-    margin-left: 50px;
+    text-align: center!important;
+    
 }
 
 .description {
-    display: inline;
-    margin-left: 350px;
+    margin-top: 5px;
 }
 
 .name {
@@ -93,12 +92,24 @@ body {
     background-color: rgb(36, 202, 14);
     border: 3px solid;
     border-radius: 20px;
-    width: 60%;
     margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.button_send {
+    width: 220px;
+    padding: 50px;
 }
 
 @media only screen and (max-width: 600px) {
     #whatstudy {
       display: none;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .messages {
+      width: 90%;
     }
   }

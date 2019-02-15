@@ -21,11 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 $router->get('rooms/check/{token}', ['uses' => 'RoomController@showAllRooms']);
 $router->get('rooms/{room}/check/{token}', ['uses' => 'RoomController@showOneRoom']);
+$router->get('rooms/{room}/messages/check/{token}', ['uses' => 'RoomController@showRoomMessages']);
 
 // MessageController
 $router->get('messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
-$router->get('messages/{id}/check/{token}', ['uses' => 'MessageController@showMessage']);
+$router->get('messages/{message}/check/{token}', ['uses' => 'MessageController@showOneMessage']);
 $router->post('messages/check/{token}' , ['uses' => 'MessageController@createMessage']);
 
 // UserController
-$router->get('users/check/{token}' , ['uses' => 'userController@showAllusers']);
+$router->get('users/check/{token}' , ['uses' => 'UserController@showAllusers']);
+$router->get('users/{user}/check/{token}' , ['uses' => 'UserController@showOneUser']);
