@@ -30,7 +30,7 @@ function tokenSuccess(token) {
 function showMessages(responsePage) {
 
     var response = responsePage.data;
-    console.info("Anntal Messages" + " " + response.length);
+    console.info("Aantal Messages" + " " + response.length);
 
     for (var i = response.length - 1; i > -1; i--) {
 
@@ -62,12 +62,13 @@ function showMessages(responsePage) {
     inputContainer.setAttribute("class", "input_messages");
     inputContainer.setAttribute("placeholder", "Typ hier");
 
-    var buttonContainer = document.createElement("button");
-    buttonContainer.setAttribute("class", "button_send");
+    var buttonContainer = document.createElement("BUTTON");
     buttonContainer.setAttribute("id", "button-send");
 
     messagesParentContainer.appendChild(inputContainer);
     messagesParentContainer.appendChild(buttonContainer);
+
+    buttonContainer.innerHTML = "Send";
 
 }
 
@@ -82,7 +83,7 @@ function showMessagesFailed() {
 function addButtonActions() {
     var publicPage = document.getElementById("public-name");
     var homePage = document.getElementById("home_page");
-
+    
     homePage.addEventListener("click", function () {
         showHomePage();
     });
@@ -91,6 +92,15 @@ function addButtonActions() {
         fetchMessages();
         showPublicPage();
     });
+
+    document.addEventListener('click',function(e){
+        if(e.target && e.target.id== 'button-send'){alert("Nog mee bezig"); postMessage();}
+     });
+
+    // buttonContainer.addEventListener("click", function () {
+    //     alert("Test");
+    // });
+
 }
 
 /**
@@ -130,6 +140,7 @@ function fetchRooms() {
 function postMessage() {
 
     if (codeToken) {
+        var send;
         var myPostAPI = new Api("POST");
         myPostAPI.route = 'messages/check/' + codeToken.token;
         myPostAPI.data = send;
