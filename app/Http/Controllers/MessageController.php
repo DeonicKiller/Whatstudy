@@ -62,7 +62,6 @@ class MessageController extends Controller
         }
         $rules = [
             'user_id' => 'max:255',
-            'room_id' => 'max:255',
             'description' => 'max:255',
         ];
 

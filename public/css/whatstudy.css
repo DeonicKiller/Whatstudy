@@ -40,7 +40,7 @@ body {
     margin-left: 40px;
 }
 
-.input_messages {
+#input_messages {
     margin-bottom: 10px;
     border-radius: 20px;
     border-top-color: black;
@@ -49,6 +49,7 @@ body {
     border-right-color: black;
     width: 50%;
     margin-left: 10px;
+    padding-left: 10px;
 }
 
 .time {

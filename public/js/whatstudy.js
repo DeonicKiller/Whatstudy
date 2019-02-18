@@ -6,6 +6,7 @@ var achterNaam;
 var studentNummer;
 var codeToken = null;
 var localeResponsRooms;
+var roomId = 1;
 var messagesParentContainer = document.getElementById("publicRoomPage");
 var link_Epic = document.getElementById("link-epic");
 
@@ -138,11 +139,13 @@ function fetchRooms() {
  * Post Message throught Api
  */
 function postMessage() {
-
+console.info(send_Input);
     if (codeToken) {
         var myPostAPI = new Api("POST");
         var send_Input = document.getElementById("input_messages").value;
         var send = { 
+            user_id: studentNummer,
+            room_id: roomId,
             description: send_Input,
         };
         myPostAPI.route = 'messages/check/' + codeToken.token, send;
@@ -212,6 +215,7 @@ function showHomePage() {
 function showPublicPage() {
     var page = document.getElementById('publicRoomPage');
     var publicPage = document.getElementById('public-name');
+    var roomId = 1;
 
 
     hideAllPages();
