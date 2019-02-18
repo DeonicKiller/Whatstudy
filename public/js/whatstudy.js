@@ -141,9 +141,9 @@ function postMessage() {
 
     if (codeToken) {
         var myPostAPI = new Api("POST");
-        var send_Button = document.getElementById("button-send").value;
+        var send_Input = document.getElementById("input_messages").value;
         var send = { 
-            description: send_Button,
+            description: send_Input,
         };
         myPostAPI.route = 'messages/check/' + codeToken.token, send;
         myPostAPI.execute(postMessageSucces, errorPostMessage);
