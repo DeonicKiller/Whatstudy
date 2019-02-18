@@ -59,7 +59,7 @@ function showMessages(responsePage) {
     }
 
     var inputContainer = document.createElement("input");
-    inputContainer.setAttribute("class", "input_messages");
+    inputContainer.setAttribute("id", "input_messages");
     inputContainer.setAttribute("placeholder", "Typ hier");
 
     var buttonContainer = document.createElement("BUTTON");
