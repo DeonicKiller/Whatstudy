@@ -140,10 +140,12 @@ function fetchRooms() {
 function postMessage() {
 
     if (codeToken) {
-        var send;
         var myPostAPI = new Api("POST");
-        myPostAPI.route = 'messages/check/' + codeToken.token;
-        myPostAPI.data = send;
+        var send_Button = document.getElementById("button-send").value;
+        var send = { 
+            description: send_Button,
+        };
+        myPostAPI.route = 'messages/check/' + codeToken.token, send;
         myPostAPI.execute(postMessageSucces, errorPostMessage);
     }
 
