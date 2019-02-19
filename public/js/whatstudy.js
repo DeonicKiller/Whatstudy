@@ -6,7 +6,8 @@ var achterNaam;
 var studentNummer;
 var codeToken = null;
 var localeResponsRooms;
-var roomId = 1;
+var currentRoomId = 0;
+var roomId = [];
 var messagesParentContainer = document.getElementById("publicRoomPage");
 var link_Epic = document.getElementById("link-epic");
 
@@ -84,7 +85,7 @@ function showMessagesFailed() {
 function addButtonActions() {
     var publicPage = document.getElementById("public-name");
     var homePage = document.getElementById("home_page");
-    
+
     homePage.addEventListener("click", function () {
         showHomePage();
     });
@@ -94,9 +95,12 @@ function addButtonActions() {
         showPublicPage();
     });
 
-    document.addEventListener('click',function(e){
-        if(e.target && e.target.id== 'button-send'){alert("Nog mee bezig"); postMessage();}
-     });
+    document.addEventListener('click', function (e) {
+        if (e.target && e.target.id == 'button-send') {
+            alert("Nog mee bezig");
+            postMessage();
+        }
+    });
 
     // buttonContainer.addEventListener("click", function () {
     //     alert("Test");
@@ -139,19 +143,14 @@ function fetchRooms() {
  * Post Message throught Api
  */
 function postMessage() {
-console.info(send_Input);
-    if (codeToken) {
-        var myPostAPI = new Api("POST");
-        var send_Input = document.getElementById("input_messages").value;
-        var send = { 
-            user_id: studentNummer,
-            room_id: roomId,
-            description: send_Input,
-        };
-        myPostAPI.route = 'messages/check/' + codeToken.token, send;
-        myPostAPI.execute(postMessageSucces, errorPostMessage);
-    }
-
+    var send_Input = document.getElementById("input_messages").value;
+    var send = {
+        user_id: studentNummer,
+        room_id: roomId[currentRoomId],
+        description: send_Input,
+    };
+    var myPostApi = new Api('POST', 'messages/check/' + codeToken.token, send);
+    myPostApi.execute(postMessageSucces, errorPostMessage);
 }
 
 /*
@@ -168,7 +167,7 @@ function showRooms(response) {
  * Post Message Succes
  */
 function postMessageSucces(response) {
-
+    console.info("gelukt");
 }
 
 /*
