@@ -6,8 +6,7 @@ var achterNaam;
 var studentNummer;
 var codeToken = null;
 var localeResponsRooms;
-var currentRoomId = 0;
-var roomId = [];
+var roomId;
 var messagesParentContainer = document.getElementById("publicRoomPage");
 var link_Epic = document.getElementById("link-epic");
 
@@ -66,6 +65,7 @@ function showMessages(responsePage) {
 
     var buttonContainer = document.createElement("BUTTON");
     buttonContainer.setAttribute("id", "button-send");
+    buttonContainer.setAttribute("class", "btn btn-outline-primary");
 
     messagesParentContainer.appendChild(inputContainer);
     messagesParentContainer.appendChild(buttonContainer);
@@ -146,7 +146,7 @@ function postMessage() {
     var send_Input = document.getElementById("input_messages").value;
     var send = {
         user_id: studentNummer,
-        room_id: roomId[currentRoomId],
+        room_id: roomId,
         description: send_Input,
     };
     var myPostApi = new Api('POST', 'messages/check/' + codeToken.token, send);
@@ -168,6 +168,8 @@ function showRooms(response) {
  */
 function postMessageSucces(response) {
     console.info("gelukt");
+    console.info(response);
+    reloadMessages();
 }
 
 /*
@@ -193,6 +195,12 @@ function tokenError(message) {
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 
+function reloadMessages() {
+    setTimeout(function () {
+        //hier komt de functie om de messages te reloaden
+    }, 3000);
+}
+
 function hideAllPages() {
     var publicPage = document.getElementById("publicRoomPage");
     var homePage = document.getElementById('homePage');
@@ -214,7 +222,7 @@ function showHomePage() {
 function showPublicPage() {
     var page = document.getElementById('publicRoomPage');
     var publicPage = document.getElementById('public-name');
-    var roomId = 1;
+    roomId = 1;
 
 
     hideAllPages();
