@@ -126,7 +126,7 @@ function addButtonActions() {
 function fetchMessages() {
     if (codeToken) {
         var myAPI = new Api("GET");
-        myAPI.route = "rooms/" + 1 + "/messages/check/" + codeToken.token;
+        myAPI.route = "rooms/" + roomId + "/messages/check/" + codeToken.token;
         myAPI.data = null;
         myAPI.execute(showMessages, showMessagesFailed);
     } else {
