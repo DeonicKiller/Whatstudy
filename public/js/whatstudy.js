@@ -10,6 +10,9 @@ var roomId;
 var messagesParentContainer = document.getElementById("publicRoomPage");
 var link_Epic = document.getElementById("link-epic");
 
+/**
+ * Succes message Token
+ */
 function tokenSuccess(token) {
     link_Epic.style.display = 'none';
     voorNaam = token.name.first;
@@ -84,6 +87,7 @@ function showMessagesFailed() {
  */
 function addButtonActions() {
     var publicPage = document.getElementById("public-name");
+    var htmlPage = document.getElementById("html/css_name");
     var homePage = document.getElementById("home_page");
 
     homePage.addEventListener("click", function () {
@@ -95,16 +99,16 @@ function addButtonActions() {
         showPublicPage();
     });
 
+    htmlPage.addEventListener("click", function () {
+        fetchMessages();
+        showPublicPage();
+    });
+
     document.addEventListener('click', function (e) {
         if (e.target && e.target.id == 'button-send') {
-            alert("Nog mee bezig");
             postMessage();
         }
     });
-
-    // buttonContainer.addEventListener("click", function () {
-    //     alert("Test");
-    // });
 
 }
 
@@ -114,7 +118,7 @@ function addButtonActions() {
 function fetchMessages() {
     if (codeToken) {
         var myAPI = new Api("GET");
-        myAPI.route = "rooms/1/messages/check/" + codeToken.token;
+        myAPI.route = "rooms/"+ 1 +"/messages/check/" + codeToken.token;
         myAPI.data = null;
         myAPI.execute(showMessages, showMessagesFailed);
     } else {
@@ -151,6 +155,7 @@ function postMessage() {
     };
     var myPostApi = new Api('POST', 'messages/check/' + codeToken.token, send);
     myPostApi.execute(postMessageSucces, errorPostMessage);
+
 }
 
 /*
@@ -166,26 +171,30 @@ function showRooms(response) {
 /*
  * Post Message Succes
  */
-function postMessageSucces(response) {
+function postMessageSucces(responsePage) {
     console.info("gelukt");
-    console.info(response);
+    console.info(responsePage);
     reloadMessages();
 }
 
-/*
- * error fetching Rooms
+/**
+ * Error messages van de Rooms
  */
 function errorRooms(statusCode, errorMessage) {
     console.log(statusCode);
     console.log(errorMessage);
 }
-
+/**
+ * Error messages van Messages
+ */
 function errorPostMessage(response) {
     localeResponsRooms = response;
     console.log(localeResponsRooms);
     alert("Bericht versturen is niet gelukt, Probeer later nog eens");
 }
-
+/**
+ * Error messages Token
+ */
 function tokenError(message) {
     console.log(message);
 
@@ -194,13 +203,19 @@ function tokenError(message) {
      */
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
-
+/**
+ * Removed de div van de publicpage
+ */
 function reloadMessages() {
-    setTimeout(function () {
-        //hier komt de functie om de messages te reloaden
-    }, 3000);
+    var messagesParentContainer = document.getElementById("publicRoomPage");
+    while (messagesParentContainer.hasChildNodes()) {
+        messagesParentContainer.removeChild(messagesParentContainer.lastChild);
+    }
+    fetchMessages();
 }
-
+/**
+ * Hide alle pagina's die hier in staan
+ */
 function hideAllPages() {
     var publicPage = document.getElementById("publicRoomPage");
     var homePage = document.getElementById('homePage');
@@ -210,7 +225,9 @@ function hideAllPages() {
 
 }
 
-//test
+/**
+ * Laat de home Pagina zien
+ */
 function showHomePage() {
     var homePage = document.getElementById('homePage');
 
@@ -218,7 +235,9 @@ function showHomePage() {
 
     homePage.style.display = 'block';
 }
-
+/**
+ * Laat de public Pagina zien
+ */
 function showPublicPage() {
     var page = document.getElementById('publicRoomPage');
     var publicPage = document.getElementById('public-name');
@@ -230,7 +249,9 @@ function showPublicPage() {
     page.style.display = 'block';
     publicPage.style.display = 'none';
 }
-
+/**
+ * Vult de Rooms in de nav bar
+ */
 function fillMenu() {
     var publicPage = document.getElementById('public-name');
     var html_cssPage = document.getElementById("html/css_name");
