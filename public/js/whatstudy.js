@@ -103,13 +103,13 @@ function addButtonActions() {
     });
 
     publicPage.addEventListener("click", function () {
-        fetchMessages();
         showPublicPage();
+        fetchMessages();
     });
 
     htmlPage.addEventListener("click", function () {
-        fetchMessages();
         showHtmlPage();
+        fetchMessages();
     });
 
     document.addEventListener('click', function (e) {
