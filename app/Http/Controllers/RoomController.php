@@ -39,7 +39,7 @@ class RoomController extends Controller
     public function showRoomMessages($room, $token, Request $request)
     {      
         
-        $messages = Message::where('room_id', $room )->orderBy('created_at', 'desc')->paginate(20);
+        $messages = Message::where('room_id', $room )->with('user.user_type')->orderBy('created_at', 'desc')->paginate(20);
         return response()->json($messages);
 
 }

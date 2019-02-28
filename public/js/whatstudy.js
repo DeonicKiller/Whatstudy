@@ -8,6 +8,8 @@ var codeToken = null;
 var localeResponsRooms;
 var roomId;
 var messagesParentContainer = document.getElementById("publicRoomPage");
+var messageDivContainer = document.getElementById("messagesDiv");
+var inputDivContainer = document.getElementById("inputDiv");
 var link_Epic = document.getElementById("link-epic");
 
 /**
@@ -38,27 +40,33 @@ function showMessages(responsePage) {
 
     for (var i = response.length - 1; i > -1; i--) {
 
+        // Container voor de losse Message
         var messagesContainer = document.createElement("div");
         messagesContainer.setAttribute("class", "messages");
 
         var messagesContaineruserid = document.createElement("p");
         messagesContaineruserid.setAttribute("class", "user_id");
 
+        var messagesUser_type = document.createElement("p");
+        messagesUser_type.setAttribute("class", "user_type text-center black");
+
         var messagesContainerdescription = document.createElement("p");
         messagesContainerdescription.setAttribute("class", "description");
 
         var messagesContainertime = document.createElement("p");
         messagesContainertime.setAttribute("class", "time");
+        
+        //populates every element with corresponding attribute from api
+        messagesContaineruserid.innerHTML = response[i].created_at + " " + "(" + response[i].user.name + ")";
+        messagesUser_type.innerHTML = "(" + response[i].user.user_type.name +")";
+        messagesContainerdescription.innerHTML = response[i].description;
 
         //appends created containers into parent div 
-        messagesParentContainer.appendChild(messagesContainer);
         messagesContainer.appendChild(messagesContaineruserid);
+        messagesContainer.appendChild(messagesUser_type);
         messagesContainer.appendChild(messagesContainerdescription);
         messagesContainer.appendChild(messagesContainertime);
-
-        //populates every element with corresponding attribute from api
-        messagesContaineruserid.innerHTML = response[i].created_at + "," + " " + "(" + response[i].user_id + ")";
-        messagesContainerdescription.innerHTML = response[i].description;
+        messageDivContainer.appendChild(messagesContainer);
 
     }
 
@@ -70,8 +78,8 @@ function showMessages(responsePage) {
     buttonContainer.setAttribute("id", "button-send");
     buttonContainer.setAttribute("class", "btn btn-outline-primary");
 
-    messagesParentContainer.appendChild(inputContainer);
-    messagesParentContainer.appendChild(buttonContainer);
+    inputDivContainer.appendChild(inputContainer);
+    inputDivContainer.appendChild(buttonContainer);
 
     buttonContainer.innerHTML = "Send";
 
@@ -118,7 +126,7 @@ function addButtonActions() {
 function fetchMessages() {
     if (codeToken) {
         var myAPI = new Api("GET");
-        myAPI.route = "rooms/"+ 1 +"/messages/check/" + codeToken.token;
+        myAPI.route = "rooms/" + 1 + "/messages/check/" + codeToken.token;
         myAPI.data = null;
         myAPI.execute(showMessages, showMessagesFailed);
     } else {
@@ -155,6 +163,8 @@ function postMessage() {
     };
     var myPostApi = new Api('POST', 'messages/check/' + codeToken.token, send);
     myPostApi.execute(postMessageSucces, errorPostMessage);
+    //Wouter uitleg
+    messageDivContainer.innerHTML += 'poep';
 
 }
 
@@ -174,7 +184,7 @@ function showRooms(response) {
 function postMessageSucces(responsePage) {
     console.info("gelukt");
     console.info(responsePage);
-    reloadMessages();
+    // reloadPostMessage(responsePage);
 }
 
 /**
@@ -280,3 +290,31 @@ function fillMenu() {
 addButtonActions();
 getToken();
 hideAllPages();
+
+
+function reloadPostMessage(postMessage) {
+    var messagesContaineruserid = document.createElement("p");
+    messagesContaineruserid.setAttribute("class", "user_id");
+
+    var messagesUser_type = document.createElement("p");
+    messagesUser_type.setAttribute("class", "user_type text-center");
+
+    var messagesContainerdescription = document.createElement("p");
+    messagesContainerdescription.setAttribute("class", "description");
+
+    var messagesContainertime = document.createElement("p");
+    messagesContainertime.setAttribute("class", "time");
+
+    //populates every element with corresponding attribute from api
+    messagesContaineruserid.innerHTML = postMessage[i].created_at + "," + " " + "(" + postMessage[i].user_id + ")";
+    messagesUser_type.innerHTML = response[i].user.user_type.name;
+    messagesContainerdescription.innerHTML = postMessage[i].description;
+
+    //appends created containers into parent div 
+
+    messagesContainer.appendChild(messagesContaineruserid);
+    messagesContainer.appendChild(messagesUser_type);
+    messagesContainer.appendChild(messagesContainerdescription);
+    messagesContainer.appendChild(messagesContainertime);
+    messageDivContainer.appendChild(messagesContainer);
+}

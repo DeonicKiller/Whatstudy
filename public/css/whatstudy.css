@@ -29,6 +29,7 @@ body {
 
 .user_id {
     text-align: center!important;
+    margin: 2px;
     
 }
 
@@ -81,8 +82,12 @@ body {
     color: white;
 }
 
-.text-center {
-    color:white;
+.black {
+    color: black;
+}
+
+.white {
+    color: white;
 }
 
 #studentnummer {

@@ -27,4 +27,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Message');
     }  
 
+    public function User_type()
+    {
+        return $this->belongsTo('App\User_type');
+    }  
 }
