@@ -109,7 +109,7 @@ function addButtonActions() {
 
     htmlPage.addEventListener("click", function () {
         fetchMessages();
-        showPublicPage();
+        showHtmlPage();
     });
 
     document.addEventListener('click', function (e) {
@@ -163,9 +163,6 @@ function postMessage() {
     };
     var myPostApi = new Api('POST', 'messages/check/' + codeToken.token, send);
     myPostApi.execute(postMessageSucces, errorPostMessage);
-    //Wouter uitleg
-    messageDivContainer.innerHTML += 'poep';
-
 }
 
 /*
@@ -185,6 +182,7 @@ function postMessageSucces(responsePage) {
     console.info("gelukt");
     console.info(responsePage);
     // reloadPostMessage(responsePage);
+    reloadMessages();
 }
 
 /**
@@ -217,9 +215,13 @@ function tokenError(message) {
  * Removed de div van de publicpage
  */
 function reloadMessages() {
-    var messagesParentContainer = document.getElementById("publicRoomPage");
-    while (messagesParentContainer.hasChildNodes()) {
-        messagesParentContainer.removeChild(messagesParentContainer.lastChild);
+    var messageDivContainer = document.getElementById("messagesDiv");
+     while (messageDivContainer.hasChildNodes()) {
+     messageDivContainer.removeChild(messageDivContainer.lastChild);
+     }
+     var inputDivContainer = document.getElementById("inputDiv");
+     while (inputDivContainer.hasChildNodes()) {
+     inputDivContainer.removeChild(inputDivContainer.lastChild);
     }
     fetchMessages();
 }
@@ -246,18 +248,30 @@ function showHomePage() {
     homePage.style.display = 'block';
 }
 /**
- * Laat de public Pagina zien
+ * Laat de Public Pagina zien
  */
 function showPublicPage() {
     var page = document.getElementById('publicRoomPage');
     var publicPage = document.getElementById('public-name');
     roomId = 1;
 
-
     hideAllPages();
 
     page.style.display = 'block';
     publicPage.style.display = 'none';
+}
+/**
+ * Laat de Html Pagina
+ */
+function showHtmlPage() {
+    var page = document.getElementById("html/cssRoomPage");  
+    var htmlPage = document.getElementById("html/css_name")
+    roomId = 2;
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    htmlPage.style.display = 'none';
 }
 /**
  * Vult de Rooms in de nav bar
@@ -292,29 +306,35 @@ getToken();
 hideAllPages();
 
 
-function reloadPostMessage(postMessage) {
-    var messagesContaineruserid = document.createElement("p");
-    messagesContaineruserid.setAttribute("class", "user_id");
+// function reloadPostMessage(postOneMessage) {
+    
+//     var messagesContaineruserid = document.createElement("p");
+//     messagesContaineruserid.setAttribute("class", "user_id");
 
-    var messagesUser_type = document.createElement("p");
-    messagesUser_type.setAttribute("class", "user_type text-center");
+//     var messagesUser_type = document.createElement("p");
+//     messagesUser_type.setAttribute("class", "user_type text-center");
 
-    var messagesContainerdescription = document.createElement("p");
-    messagesContainerdescription.setAttribute("class", "description");
+//     var messagesContainerdescription = document.createElement("p");
+//     messagesContainerdescription.setAttribute("class", "description");
 
-    var messagesContainertime = document.createElement("p");
-    messagesContainertime.setAttribute("class", "time");
+//     var messagesContainertime = document.createElement("p");
+//     messagesContainertime.setAttribute("class", "time");
 
-    //populates every element with corresponding attribute from api
-    messagesContaineruserid.innerHTML = postMessage[i].created_at + "," + " " + "(" + postMessage[i].user_id + ")";
-    messagesUser_type.innerHTML = response[i].user.user_type.name;
-    messagesContainerdescription.innerHTML = postMessage[i].description;
+//     // Container voor de losse Message
+//     var messagesContainer = document.createElement("div");
+//     messagesContainer.setAttribute("class", "messages");
 
-    //appends created containers into parent div 
+//     //populates every element with corresponding attribute from api
+//     messagesContaineruserid.innerHTML = postOneMessage.created_at + "," + " " + "(" + postOneMessage.user_id + ")";
+//     messagesUser_type.innerHTML = postOneMessage.user.user_type.name;
+//     messagesContainerdescription.innerHTML = postOneMessage.description;
 
-    messagesContainer.appendChild(messagesContaineruserid);
-    messagesContainer.appendChild(messagesUser_type);
-    messagesContainer.appendChild(messagesContainerdescription);
-    messagesContainer.appendChild(messagesContainertime);
-    messageDivContainer.appendChild(messagesContainer);
-}
+//     //appends created containers into parent div 
+
+//     messagesContainer.appendChild(messagesContaineruserid);
+//     messagesContainer.appendChild(messagesUser_type);
+//     messagesContainer.appendChild(messagesContainerdescription);
+//     messagesContainer.appendChild(messagesContainertime);
+//     messageDivContainer.appendChild(messagesContainer);
+    
+// }
