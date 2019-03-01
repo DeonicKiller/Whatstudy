@@ -7,7 +7,7 @@ var studentNummer;
 var codeToken = null;
 var localeResponsRooms;
 var roomId;
-var messagesParentContainer = document.getElementById("publicRoomPage");
+var messagesParentContainer = document.getElementById("alleRoomPages");
 var messageDivContainer = document.getElementById("messagesDiv");
 var inputDivContainer = document.getElementById("inputDiv");
 var link_Epic = document.getElementById("link-epic");
@@ -94,9 +94,14 @@ function showMessagesFailed() {
  * Add actions to page buttons 
  */
 function addButtonActions() {
+    var homePage = document.getElementById("home_page");
     var publicPage = document.getElementById("public-name");
     var htmlPage = document.getElementById("html/css_name");
-    var homePage = document.getElementById("home_page");
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
 
     homePage.addEventListener("click", function () {
         showHomePage();
@@ -105,11 +110,37 @@ function addButtonActions() {
     publicPage.addEventListener("click", function () {
         showPublicPage();
         fetchMessages();
+        reloadMessages2();
     });
 
     htmlPage.addEventListener("click", function () {
         showHtmlPage();
-        fetchMessages();
+        reloadMessages2();
+    });
+
+    javascriptPage.addEventListener("click", function () {
+        showJavasciptPage();
+        reloadMessages2();
+    });
+
+    laravel_lumenPage.addEventListener("click", function () {
+        showlaravel_lumenPage();
+        reloadMessages2();
+    });
+
+    fitnesse_Page.addEventListener("click", function () {
+        showFitnessePage();
+        reloadMessages2();
+    });
+
+    mysql_Page.addEventListener("click", function () {
+        showMysql_Page();
+        reloadMessages2();
+    });
+
+    vue_jsPage.addEventListener("click", function () {
+        showVue_jsPage();
+        reloadMessages2();
     });
 
     document.addEventListener('click', function (e) {
@@ -225,11 +256,22 @@ function reloadMessages() {
     }
     fetchMessages();
 }
+
+function reloadMessages2() {
+    var messageDivContainer = document.getElementById("messagesDiv");
+     while (messageDivContainer.hasChildNodes()) {
+     messageDivContainer.removeChild(messageDivContainer.lastChild);
+     }
+     var inputDivContainer = document.getElementById("inputDiv");
+     while (inputDivContainer.hasChildNodes()) {
+     inputDivContainer.removeChild(inputDivContainer.lastChild);
+    }
+}
 /**
  * Hide alle pagina's die hier in staan
  */
 function hideAllPages() {
-    var publicPage = document.getElementById("publicRoomPage");
+    var publicPage = document.getElementById("alleRoomPages");
     var homePage = document.getElementById('homePage');
 
     publicPage.style.display = 'none';
@@ -251,28 +293,181 @@ function showHomePage() {
  * Laat de Public Pagina zien
  */
 function showPublicPage() {
-    var page = document.getElementById('publicRoomPage');
+    var page = document.getElementById('alleRoomPages');
     var publicPage = document.getElementById('public-name');
+    var htmlPage = document.getElementById("html/css_name");
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+    
     roomId = 1;
 
     hideAllPages();
 
     page.style.display = 'block';
     publicPage.style.display = 'none';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
 }
 /**
- * Laat de Html Pagina
+ * Laat de Html Pagina zien
  */
 function showHtmlPage() {
-    var page = document.getElementById("html/cssRoomPage");  
-    var htmlPage = document.getElementById("html/css_name")
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+
     roomId = 2;
+    reloadMessages();
 
     hideAllPages();
 
     page.style.display = 'block';
+    publicPage.style.display = 'block';
     htmlPage.style.display = 'none';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
 }
+
+function showJavasciptPage() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+
+    roomId = 3;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'none';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
+}
+
+function showlaravel_lumenPage() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+
+    roomId = 4;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'none';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
+}
+
+function showFitnessePage() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+
+    roomId = 5;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'none';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
+}
+
+function showMysql_Page() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+
+    roomId = 6;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'none';
+    vue_jsPage.style.display = 'block';
+}
+
+function showVue_jsPage() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+
+    roomId = 7;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'none';
+}
+
 /**
  * Vult de Rooms in de nav bar
  */
