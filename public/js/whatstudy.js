@@ -102,6 +102,10 @@ function addButtonActions() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
+
 
     homePage.addEventListener("click", function () {
         showHomePage();
@@ -140,6 +144,21 @@ function addButtonActions() {
 
     vue_jsPage.addEventListener("click", function () {
         showVue_jsPage();
+        reloadMessages2();
+    });
+
+    git_Page.addEventListener("click", function () {
+        gitPage();
+        reloadMessages2();
+    });
+
+    installation_Page.addEventListener("click", function () {
+        installationPage();
+        reloadMessages2();
+    });
+
+    bootstrap_Page.addEventListener("click", function () {
+        bootstrapPage();
         reloadMessages2();
     });
 
@@ -243,7 +262,7 @@ function tokenError(message) {
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
 /**
- * Removed de div van de publicpage
+ * Nodig voor de auto refresh
  */
 function reloadMessages() {
     var messageDivContainer = document.getElementById("messagesDiv");
@@ -256,7 +275,9 @@ function reloadMessages() {
     }
     fetchMessages();
 }
-
+/**
+ * Removed de div van de publicpage
+ */
 function reloadMessages2() {
     var messageDivContainer = document.getElementById("messagesDiv");
      while (messageDivContainer.hasChildNodes()) {
@@ -301,6 +322,9 @@ function showPublicPage() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
     
     roomId = 1;
 
@@ -314,6 +338,9 @@ function showPublicPage() {
     fitnesse_Page.style.display = 'block';
     mysql_Page.style.display = 'block';
     vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
 }
 /**
  * Laat de Html Pagina zien
@@ -327,6 +354,9 @@ function showHtmlPage() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
 
     roomId = 2;
     reloadMessages();
@@ -341,6 +371,9 @@ function showHtmlPage() {
     fitnesse_Page.style.display = 'block';
     mysql_Page.style.display = 'block';
     vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
 }
 
 function showJavasciptPage() {
@@ -352,6 +385,9 @@ function showJavasciptPage() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
 
     roomId = 3;
     reloadMessages();
@@ -366,6 +402,9 @@ function showJavasciptPage() {
     fitnesse_Page.style.display = 'block';
     mysql_Page.style.display = 'block';
     vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
 }
 
 function showlaravel_lumenPage() {
@@ -377,6 +416,9 @@ function showlaravel_lumenPage() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
 
     roomId = 4;
     reloadMessages();
@@ -391,6 +433,9 @@ function showlaravel_lumenPage() {
     fitnesse_Page.style.display = 'block';
     mysql_Page.style.display = 'block';
     vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
 }
 
 function showFitnessePage() {
@@ -402,6 +447,9 @@ function showFitnessePage() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
 
     roomId = 5;
     reloadMessages();
@@ -416,6 +464,9 @@ function showFitnessePage() {
     fitnesse_Page.style.display = 'none';
     mysql_Page.style.display = 'block';
     vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
 }
 
 function showMysql_Page() {
@@ -427,6 +478,9 @@ function showMysql_Page() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
 
     roomId = 6;
     reloadMessages();
@@ -441,6 +495,9 @@ function showMysql_Page() {
     fitnesse_Page.style.display = 'block';
     mysql_Page.style.display = 'none';
     vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
 }
 
 function showVue_jsPage() {
@@ -452,6 +509,9 @@ function showVue_jsPage() {
     var fitnesse_Page = document.getElementById("fitnesse_name");
     var mysql_Page = document.getElementById("mysql_name");
     var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
 
     roomId = 7;
     reloadMessages();
@@ -466,7 +526,105 @@ function showVue_jsPage() {
     fitnesse_Page.style.display = 'block';
     mysql_Page.style.display = 'block';
     vue_jsPage.style.display = 'none';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
 }
+
+function gitPage() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
+
+    roomId = 8;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'none';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'block';
+}
+
+function installationPage() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
+
+    roomId = 9;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'none';
+    bootstrap_Page.style.display = 'block';
+}
+
+function bootstrapPage() {
+    var page = document.getElementById("alleRoomPages");  
+    var htmlPage = document.getElementById("html/css_name");
+    var publicPage = document.getElementById('public-name');
+    var javascriptPage = document.getElementById("javascript_name");
+    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
+    var fitnesse_Page = document.getElementById("fitnesse_name");
+    var mysql_Page = document.getElementById("mysql_name");
+    var vue_jsPage = document.getElementById("vue.js_name");
+    var git_Page = document.getElementById("git_name");
+    var installation_Page = document.getElementById("installation_name");
+    var bootstrap_Page = document.getElementById("bootstrap-name");
+    
+
+    roomId = 10;
+    reloadMessages();
+
+    hideAllPages();
+
+    page.style.display = 'block';
+    publicPage.style.display = 'block';
+    htmlPage.style.display = 'block';
+    javascriptPage.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
+    git_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
+    bootstrap_Page.style.display = 'none';
+}
+
 
 /**
  * Vult de Rooms in de nav bar
