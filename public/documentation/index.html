@@ -43,6 +43,13 @@
 
 <h1>Test Script</h1>
 
+<p>|script           |browser test                                             |
+    |open            |https://epic.clow.nl/login                              |
+    |enter           |teststudent         |as         |name=_username         |
+    |enter           |teststudent         |as         |name=_password         |
+    |click           |xpath=(//button[@type='submit'])                        |
+    |wait for visible|xpath=//a[contains(text(),'Test Student (teststudent)')]|</p>
+
 
 
 
