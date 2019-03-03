@@ -18,37 +18,64 @@
 </p>
 <ul>
     <li>Use Case Diagram</li>
+    <li>ERD</li>
+    <li>KlassenDiagram</li>
     <li>Testscript</li>
 </ul>
+
+<h1>Use Case Diagram:</h1>
 
 <h2>Use Case Diagram Userstory 1</h2>
 <img src="documentation/docImg/Use case Diagram US1 WHATSTUDY.png" alt ="Use case us 1">
 <br><br>
 
 <h2>Use Case Diagram Userstory 2</h2>
-<img src="documentation/docImg/Use case Diagram US2 WHATSTUDY.png" alt ="Use case us 1">
+<img src="documentation/docImg/Use case Diagram US2 WHATSTUDY.png" alt ="Use case us 2">
 <br><br>
 
 <h2>Use Case Diagram Userstory 3</h2>
-<img src="documentation/docImg/Use case Diagram US3 WHATSTUDY.png" alt ="Use case us 1">
+<img src="documentation/docImg/Use case Diagram US3 WHATSTUDY.png" alt ="Use case us 3">
 <br><br>
 
 <h2>Use Case Diagram Userstory 4</h2>
-<img src="documentation/docImg/Use case Diagram US4 WHATSTUDY.png" alt ="Use case us 1">
+<img src="documentation/docImg/Use case Diagram US4 WHATSTUDY.png" alt ="Use case us 4">
 <br><br>
 
 <h2>Use Case Diagram Userstory 5</h2>
-<img src="documentation/docImg/Use case Diagram US5 WHATSTUDY.png" alt ="Use case us 1">
+<img src="documentation/docImg/Use case Diagram US5 WHATSTUDY.png" alt ="Use case us 5">
+<br><br>
+<br>
+
+<h1>ERD:</h1>
+
+<img src="documentation/docImg/erd whatstudy.png" alt ="ERD Whatstudy">
 <br><br>
 
-<h1>Test Script</h1>
+<h1>KlassenDiagram:</h1>
 
-<p>|script           |browser test                                             |
+<img src="documentation/docImg/whatstudy_klassendiagram.jpg" alt ="KlassenDiagram">
+<br><br>
+
+<h1>Test Script:</h1>
+
+<h2>Userstory 1</h2>
+<h4>Epic inlog Userstory 1</h4>
+<p> |script          |browser test                                            |
+    <br>
     |open            |https://epic.clow.nl/login                              |
+    <br>
     |enter           |teststudent         |as         |name=_username         |
+    <br>
     |enter           |teststudent         |as         |name=_password         |
+    <br>
     |click           |xpath=(//button[@type='submit'])                        |
-    |wait for visible|xpath=//a[contains(text(),'Test Student (teststudent)')]|</p>
+    <br>
+    |wait for visible|xpath=//a[contains(text(),'Test Student (teststudent)')]|
+    <br>
+    |open            |https://ori.clow.nl/~s1114352/whatstudy/                |
+    <br>
+    |wait for visible|xpath=//h2[contains(text(),'welkom Test Student')]      |
+</p>
 
 
 
