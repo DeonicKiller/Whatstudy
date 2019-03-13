@@ -25,6 +25,9 @@
                 <li class="nav-item active">
                     <a id="home_page" class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                        <a id="statistic_page" class="nav-link" href="#">Mind Blown Shit <span class="sr-only">(current)</span></a>
+                    </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -49,22 +52,22 @@
 
     <!--Hier is een bootstrap element-->
     <h1 class="text-center white">Welkom bij Whatstudy van HBO-ICT</h1>
-    
+
     <div id="homePage">
-    
+
         <h1 class="text-center white">ORI3</h1>
-    
+
         <div id="chatroom-container">
             <!--Hier is een Bootsrap element-->
             <h2 class="text-center white" id="studentnummer"></h2>
             <h2 class="text-center white" id="naam"></h2>
-            
-            
+
+
         </div>
     </div>
-    
+
     <a id="link-epic" class="text-center" href="https://epic.clow.nl/login" target="blank">Login op Epic</a>
-    
+
     <div class="messages_text">
 
     </div>
@@ -75,13 +78,22 @@
         <div id="inputDiv"></div>
     </div>
 
-    <!-- jQuery first, then Bootstrap JS -->
+    <div id="statisticPage">
+        <canvas id="myChart"></canvas>
+        <p>test</p>
+    </div>
 
+    <!-- Chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <!-- jQuery first, then Bootstrap JS -->
     <script src="https://ori.clow.nl/cdn/api.js"></script>
     <script src="https://ori.clow.nl/cdn/vue/2.5.22/vue.js"></script>
-    <!-- Popper JS -->  
+
+    <!-- Popper JS -->
     <script src="js/whatstudy.js"></script>
 
+    <!-- Javascript Whatstudy / Bootstrap -->
     <script src="https://ori.clow.nl/cdn/jquery/3.3.1/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://ori.clow.nl/cdn/bootstrap/4.2.1/js/bootstrap.min.js"></script>

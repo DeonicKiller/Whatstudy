@@ -59,8 +59,9 @@
 <h1>Test Script:</h1>
 
 <h2>Userstory 1</h2>
+
 <h4>Epic inlog Userstory 1</h4>
-<p> |script          |browser test                                            |
+<p> !|script         |browser test                                            |
     <br>
     |open            |https://epic.clow.nl/login                              |
     <br>
@@ -75,6 +76,19 @@
     |open            |https://ori.clow.nl/~s1114352/whatstudy/                |
     <br>
     |wait for visible|xpath=//h2[contains(text(),'welkom Test Student')]      |
+</p>
+<br>
+
+<h2>Userstory 2</h2>
+
+<h4>Berichten kunnen zien van Rooms</h4>
+<p>!|script  |json http test                                                                                                     |
+    <br>
+    |get from|https://ori.clow.nl/~s1114352/whatstudy/api/rooms/1/messages/check/417ff09c4515bbb2c3a0de3c5a7014d3d9246b7c9ad6887c|
+    <br>
+    |show    |response                                                                                                           |
+    <br>
+    |check   |response status                                                |200                                                |
 </p>
 
 

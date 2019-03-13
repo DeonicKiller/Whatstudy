@@ -23,6 +23,12 @@ body {
     margin-top: 5px;
 }
 
+canvas {
+    width:60% !important;
+    height:50% !important;
+    margin:auto;
+}
+
 #home_Page {
     margin-left: 500px;
 }

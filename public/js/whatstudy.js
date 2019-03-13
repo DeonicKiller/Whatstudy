@@ -59,7 +59,7 @@ function showMessages(responsePage) {
         //populates every element with corresponding attribute from api
         messagesContaineruserid.innerHTML = response[i].created_at + " " + "(" + response[i].user.name + ")";
         messagesUser_type.innerHTML = "(" + response[i].user.user_type.name +")";
-        messagesContainerdescription.innerHTML = response[i].description;
+        messagesContainerdescription.innerHTML = response[i].description.replace(/<(?:.|\n)*?>/gm, '');
 
         //appends created containers into parent div 
         messagesContainer.appendChild(messagesContaineruserid);
@@ -82,7 +82,8 @@ function showMessages(responsePage) {
     inputDivContainer.appendChild(buttonContainer);
 
     buttonContainer.innerHTML = "Send";
-
+    
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
 // Fout bericht als de berichten niet worden opgehaald
@@ -105,7 +106,8 @@ function addButtonActions() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
-
+    // var statistic_Page = $("#statisticPage");
+    var statistic_Page = document.getElementById("statistic_page");
 
     homePage.addEventListener("click", function () {
         showHomePage();
@@ -160,6 +162,10 @@ function addButtonActions() {
     bootstrap_Page.addEventListener("click", function () {
         bootstrapPage();
         reloadMessages2();
+    });
+
+    statistic_Page.addEventListener("click", function () {
+        showStatisticPage();
     });
 
     document.addEventListener('click', function (e) {
@@ -294,7 +300,9 @@ function reloadMessages2() {
 function hideAllPages() {
     var publicPage = document.getElementById("alleRoomPages");
     var homePage = document.getElementById('homePage');
+    var statistic_Page = document.getElementById("statisticPage");
 
+    statistic_Page.style.display = 'none';
     publicPage.style.display = 'none';
     homePage.style.display = 'none';
 
@@ -309,6 +317,19 @@ function showHomePage() {
     hideAllPages();
 
     homePage.style.display = 'block';
+    
+}
+
+function showStatisticPage() {
+    // var statistic_Page = $("#statisticPage");
+    var statistic_Page = document.getElementById("statistic_page");
+    var page = document.getElementById("statisticPage");
+
+    hideAllPages();
+
+    // statistic_Page.css("display", "block");
+    statistic_Page.style.display = 'block';
+    page.style.display = 'block';
 }
 /**
  * Laat de Public Pagina zien
@@ -657,6 +678,10 @@ function fillMenu() {
 addButtonActions();
 getToken();
 hideAllPages();
+/**
+ * Vraag wouter voor refresh
+ */
+//   setInterval(function(){reloadMessages()}, 3000);
 
 
 // function reloadPostMessage(postOneMessage) {
@@ -691,3 +716,34 @@ hideAllPages();
 //     messageDivContainer.appendChild(messagesContainer);
     
 // }
+
+
+function showChart() {
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+
+        // The data for our dataset
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+                label: ["Public",],
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }, {
+                label: ["HTML/CSS",],
+                backgroundColor: 'rgb(0,128,0)',
+                borderColor: 'rgb(0,128,0)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+}
+
+showChart();
