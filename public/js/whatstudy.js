@@ -106,7 +106,6 @@ function addButtonActions() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
-    // var statistic_Page = $("#statisticPage");
     var statistic_Page = document.getElementById("statistic_page");
 
     homePage.addEventListener("click", function () {
@@ -302,9 +301,9 @@ function reloadMessages2() {
 function hideAllPages() {
     var publicPage = document.getElementById("alleRoomPages");
     var homePage = document.getElementById('homePage');
-    var statistic_Page = document.getElementById("statisticPage");
+    var statistic_Page = $("#statisticPage");
 
-    statistic_Page.style.display = 'none';
+    statistic_Page.css("display", "block");
     publicPage.style.display = 'none';
     homePage.style.display = 'none';
 
@@ -323,14 +322,12 @@ function showHomePage() {
 }
 
 function showStatisticPage() {
-    // var statistic_Page = $("#statisticPage");
-    var statistic_Page = document.getElementById("statistic_page");
+    var statistic_Page = $("#statisticPage");
     var page = document.getElementById("statisticPage");
 
     hideAllPages();
 
-    // statistic_Page.css("display", "block");
-    statistic_Page.style.display = 'block';
+    statistic_Page.css("display", "block");
     page.style.display = 'block';
 }
 /**

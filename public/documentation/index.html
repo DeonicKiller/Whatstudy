@@ -123,14 +123,37 @@
 |click           |xpath=//button[@id='button-send']                       |
 </p>
 
+<br>
+<h2>Userstory 4</h2>
 
+<h4>Backhand nieuwe message (werkt niet maar volgens Wouter klopt de code)</h4>
+<p>
+!define postdata {"user_id":"s1114352","room_id":"1","description":"FITNESSE-TEST API"}
+<br>
 
+!|script |json http test        
+<br>                                                                                                                                                                 |
+|get from|https://ori.clow.nl/~s1114352/whatstudy/api/messages/check/14ddd9e198198ce970148f076582cd4286a53b402a1b901a
+<br>                                                                            |
+|check   |response status   
+<br>                                                    |200                                                                                                             |
+|show    |response          
+<br>                                                                                                                                                                     |
+|$totaal=|json path count  
+<br>                                                     |$[*]                                                                                                            |
+|get from|https://ori.clow.nl/~s1114352/whatstudy/api/messages/check/14ddd9e198198ce970148f076582cd4286a53b402a1b901a 
+<br>                                                                           |
+|post    |{"user_id":"s1114352","room_id":"1","description":"FITNESSE-TEST API"}|to  |https://ori.clow.nl/~s1114352/whatstudy/api/messages/check/14ddd9e198198ce970148f076582cd4286a53b402a1b901a|
+<br>
 
-
-
-
-
-
+|check   |response status                                                       |200                                                                                                             |
+<br>
+|get from|https://ori.clow.nl/~s1114352/whatstudy/api/messages/check/14ddd9e198198ce970148f076582cd4286a53b402a1b901a                                                                            |
+<br>
+|check   |response status                                                       |200                                                                                                             |
+<br>
+|check   |json path count                                                       |$[*]|>$totaal                                                                                                   |
+</p>
 
 </body>
 
