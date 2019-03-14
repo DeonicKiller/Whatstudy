@@ -237,6 +237,8 @@ function showRooms(response) {
 function postMessageSucces(responsePage) {
     console.info("gelukt");
     console.info(responsePage);
+    var send_Input = document.getElementById("input_messages");
+    send_Input.innerHTML = "";
     // reloadPostMessage(responsePage);
     reloadMessages();
 }

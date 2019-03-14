@@ -92,6 +92,31 @@
 </p>
 
 
+<h2>Userstory 3</h2>
+
+<h4>Berichten kunnen posten</h4>
+<p>!|script         |browser test                                            |
+|open            |https://epic.clow.nl/login                              |
+|enter           |teststudent          |as       |name=_username          |
+|enter           |teststudent          |as       |name=_password          |
+|click           |xpath=(//button[@type='submit'])                        |
+|wait for visible|xpath=//a[contains(text(),'Test Student (teststudent)')]|
+|open            |https://ori.clow.nl/~s1114352/whatstudy/                |
+|wait for visible|xpath=//h2[contains(text(),'welkom Test Student')]      |
+|click           |xpath=//span[@class='navbar-toggler-icon']              |
+|click           |xpath=//a[@id='navbarDropdownMenuLink']                 |
+|click           |xpath=//a[@id='public-name']                            |
+|enter           |FITNESSE-TEST        |as       |id=input_messages       |
+|click           |xpath=//button[@id='button-send']                       |
+</p>
+
+
+
+
+
+
+
+
 
 
 </body>
