@@ -383,8 +383,8 @@ function showStatistics(response) {
                 label: ["Aantal geposten messages", ],
                 color: 'rgb(255,0,0)',
                 borderWidth: 10,
-                backgroundColor: 'rgb(0, 0, 0, 0.6)',
-                borderColor: 'rgb(0, 0, 0, 1)',
+                backgroundColor: 'rgb(0, 0, 255, 0.6)',
+                borderColor: 'rgb(0, 0, 255, 1)',
                 data: [newArray[0], newArray[1], newArray[2], newArray[3], newArray[4], newArray[5], newArray[6]],
             }]
         },
