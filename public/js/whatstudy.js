@@ -99,16 +99,16 @@ function showMessagesFailed() {
  */
 function addButtonActions() {
     var homePage = document.getElementById("home_page");
-    var publicPage = document.getElementById("public-name");
-    var htmlPage = document.getElementById("html/css_name");
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var publicPage = document.getElementById("room_link1");
+    var htmlPage = document.getElementById("room_link2");
+    var javascriptPage = document.getElementById("room_link3");
+    var laravel_lumenPage = document.getElementById("room_link4");
+    var fitnesse_Page = document.getElementById("room_link5");
+    var mysql_Page = document.getElementById("room_link6");
+    var vue_jsPage = document.getElementById("room_link7");
+    var git_Page = document.getElementById("room_link8");
+    var installation_Page = document.getElementById("room_link9");
+    var bootstrap_Page = document.getElementById("room_link10");
     var statistic_Page = $('#statistic_page')[0];
 
     homePage.addEventListener("click", function () {
@@ -327,7 +327,7 @@ function reloadMessages2() {
  * Hide alle pagina's die hier in staan
  */
 function hideAllPages() {
-    var publicPage = document.getElementById("alleRoomPages");
+    var alle_Room_Pages = document.getElementById("alleRoomPages");
     var homePage = document.getElementById('homePage');
     var statistic_Page = $("#statisticPage");
     var roomnaam1 = $("#roomnaam1");
@@ -353,9 +353,8 @@ function hideAllPages() {
     roomnaam9.css("display", "none");
     roomnaam10.css("display", "none");
     statistic_Page.css("display", "none");
-    publicPage.style.display = 'none';
+    alle_Room_Pages.style.display = 'none';
     homePage.style.display = 'none';
-
 }
 
 /**
@@ -439,16 +438,7 @@ function showStatisticPage() {
  */
 function showPublicPage() {
     var page = document.getElementById('alleRoomPages');
-    var publicPage = document.getElementById('public-name');
-    var htmlPage = document.getElementById("html/css_name");
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var publicPage = document.getElementById("room_link1");
     var roomnaam1 = $("#roomnaam1");
 
 
@@ -457,16 +447,7 @@ function showPublicPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'none';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    publicPage.style.display = 'block';
     roomnaam1.css("display", "block");
 }
 /**
@@ -474,16 +455,7 @@ function showPublicPage() {
  */
 function showHtmlPage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var htmlPage = document.getElementById("room_link2");
     var roomnaam2 = $("#roomnaam2");
 
     roomId = 2;
@@ -492,31 +464,13 @@ function showHtmlPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'none';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    htmlPage.style.display = 'block';
     roomnaam2.css("display", "block");
 }
 
 function showJavasciptPage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var javascriptPage = document.getElementById("room_link3");
     var roomnaam3 = $("#roomnaam3");
 
     roomId = 3;
@@ -525,31 +479,13 @@ function showJavasciptPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'none';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    javascriptPage.style.display = 'block';
     roomnaam3.css("display", "block");
 }
 
 function showlaravel_lumenPage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var laravel_lumenPage = document.getElementById("room_link4");
     var roomnaam4 = $("#roomnaam4");
 
     roomId = 4;
@@ -558,31 +494,13 @@ function showlaravel_lumenPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'none';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    laravel_lumenPage.style.display = 'block';
     roomnaam4.css("display", "block");
 }
 
 function showFitnessePage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var fitnesse_Page = document.getElementById("room_link5");
     var roomnaam5 = $("#roomnaam5");
 
     roomId = 5;
@@ -591,31 +509,13 @@ function showFitnessePage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'none';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    fitnesse_Page.style.display = 'block';
     roomnaam5.css("display", "block");
 }
 
 function showMysql_Page() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var mysql_Page = document.getElementById("room_link6");
     var roomnaam6 = $("#roomnaam6");
 
     roomId = 6;
@@ -624,31 +524,13 @@ function showMysql_Page() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'none';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    mysql_Page.style.display = 'block';
     roomnaam6.css("display", "block");
 }
 
 function showVue_jsPage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var vue_jsPage = document.getElementById("room_link7");
     var roomnaam7 = $("#roomnaam7");
 
     roomId = 7;
@@ -657,31 +539,13 @@ function showVue_jsPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'none';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    vue_jsPage.style.display = 'block';
     roomnaam7.css("display", "block");
 }
 
 function gitPage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var git_Page = document.getElementById("room_link8");
     var roomnaam8 = $("#roomnaam8");
 
     roomId = 8;
@@ -690,31 +554,13 @@ function gitPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'none';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'block';
+    git_Page.style.display = 'block';
     roomnaam8.css("display", "block");
 }
 
 function installationPage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var installation_Page = document.getElementById("room_link9");
     var roomnaam9 = $("#roomnaam9");
 
     roomId = 9;
@@ -723,31 +569,13 @@ function installationPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'none';
-    bootstrap_Page.style.display = 'block';
+    installation_Page.style.display = 'block';
     roomnaam9.css("display", "block");
 }
 
 function bootstrapPage() {
     var page = document.getElementById("alleRoomPages");
-    var htmlPage = document.getElementById("html/css_name");
-    var publicPage = document.getElementById('public-name');
-    var javascriptPage = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var bootstrap_Page = document.getElementById("room_link10");
     var roomnaam10 = $("#roomnaam10");
 
 
@@ -757,16 +585,7 @@ function bootstrapPage() {
     hideAllPages();
 
     page.style.display = 'block';
-    publicPage.style.display = 'block';
-    htmlPage.style.display = 'block';
-    javascriptPage.style.display = 'block';
-    laravel_lumenPage.style.display = 'block';
-    fitnesse_Page.style.display = 'block';
-    mysql_Page.style.display = 'block';
-    vue_jsPage.style.display = 'block';
-    git_Page.style.display = 'block';
-    installation_Page.style.display = 'block';
-    bootstrap_Page.style.display = 'none';
+    bootstrap_Page.style.display = 'block';
     roomnaam10.css("display", "block");
 }
 
@@ -775,20 +594,20 @@ function bootstrapPage() {
  * Vult de Rooms in de nav bar
  */
 function fillMenu() {
-    var publicPage = document.getElementById('public-name');
-    var html_cssPage = document.getElementById("html/css_name");
-    var javascript_Page = document.getElementById("javascript_name");
-    var laravel_lumenPage = document.getElementById("larvavel/lumen_name");
-    var fitnesse_Page = document.getElementById("fitnesse_name");
-    var mysql_Page = document.getElementById("mysql_name");
-    var vue_jsPage = document.getElementById("vue.js_name");
-    var git_Page = document.getElementById("git_name");
-    var installation_Page = document.getElementById("installation_name");
-    var bootstrap_Page = document.getElementById("bootstrap-name");
+    var publicPage = document.getElementById("room_link1");
+    var htmlPage = document.getElementById("room_link2");
+    var javascriptPage = document.getElementById("room_link3");
+    var laravel_lumenPage = document.getElementById("room_link4");
+    var fitnesse_Page = document.getElementById("room_link5");
+    var mysql_Page = document.getElementById("room_link6");
+    var vue_jsPage = document.getElementById("room_link7");
+    var git_Page = document.getElementById("room_link8");
+    var installation_Page = document.getElementById("room_link9");
+    var bootstrap_Page = document.getElementById("room_link10");
 
     publicPage.innerHTML = localeResponsRooms[0].name;
-    html_cssPage.innerHTML = localeResponsRooms[1].name;
-    javascript_Page.innerHTML = localeResponsRooms[2].name;
+    htmlPage.innerHTML = localeResponsRooms[1].name;
+    javascriptPage.innerHTML = localeResponsRooms[2].name;
     laravel_lumenPage.innerHTML = localeResponsRooms[3].name;
     fitnesse_Page.innerHTML = localeResponsRooms[4].name;
     mysql_Page.innerHTML = localeResponsRooms[5].name;
