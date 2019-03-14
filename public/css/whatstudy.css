@@ -24,7 +24,7 @@ body {
 }
 
 canvas {
-    width:60% !important;
+    width:90% !important;
     height:50% !important;
     margin:auto;
 }
@@ -112,6 +112,13 @@ canvas {
 .button_send {
     width: 220px;
     padding: 50px;
+}
+
+#statisticPage {
+    background: white;
+    border-radius: 20px;
+    width:98%;
+    margin: auto;
 }
 
 @media only screen and (max-width: 600px) {

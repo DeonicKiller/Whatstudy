@@ -56,10 +56,10 @@ function showMessages(responsePage) {
 
         var messagesContainertime = document.createElement("p");
         messagesContainertime.setAttribute("class", "time");
-        
+
         //populates every element with corresponding attribute from api
         messagesContaineruserid.innerHTML = response[i].created_at + " " + "(" + response[i].user.name + ")";
-        messagesUser_type.innerHTML = "(" + response[i].user.user_type.name +")";
+        messagesUser_type.innerHTML = "(" + response[i].user.user_type.name + ")";
         messagesContainerdescription.innerHTML = response[i].description.replace(/<(?:.|\n)*?>/gm, '');
 
         //appends created containers into parent div 
@@ -83,8 +83,10 @@ function showMessages(responsePage) {
     inputDivContainer.appendChild(buttonContainer);
 
     buttonContainer.innerHTML = "Send";
-    
-    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+
+    $("html, body").animate({
+        scrollTop: $(document).height()
+    }, "slow");
 }
 
 // Fout bericht als de berichten niet worden opgehaald
@@ -286,17 +288,25 @@ function tokenError(message) {
      */
     alert("Om toegang te krijgen tot whatstudy moet u inloggen op Epic");
 }
+
+/**
+ * Error Statistics Failed
+ */
+function errorStatistics(statusCode, response) {
+    alert("statistieken kunnen niet worden opgehaald!");
+}
+
 /**
  * Nodig voor de auto refresh
  */
 function reloadMessages() {
     var messageDivContainer = document.getElementById("messagesDiv");
-     while (messageDivContainer.hasChildNodes()) {
-     messageDivContainer.removeChild(messageDivContainer.lastChild);
-     }
-     var inputDivContainer = document.getElementById("inputDiv");
-     while (inputDivContainer.hasChildNodes()) {
-     inputDivContainer.removeChild(inputDivContainer.lastChild);
+    while (messageDivContainer.hasChildNodes()) {
+        messageDivContainer.removeChild(messageDivContainer.lastChild);
+    }
+    var inputDivContainer = document.getElementById("inputDiv");
+    while (inputDivContainer.hasChildNodes()) {
+        inputDivContainer.removeChild(inputDivContainer.lastChild);
     }
     fetchMessages();
 }
@@ -305,12 +315,12 @@ function reloadMessages() {
  */
 function reloadMessages2() {
     var messageDivContainer = document.getElementById("messagesDiv");
-     while (messageDivContainer.hasChildNodes()) {
-     messageDivContainer.removeChild(messageDivContainer.lastChild);
-     }
-     var inputDivContainer = document.getElementById("inputDiv");
-     while (inputDivContainer.hasChildNodes()) {
-     inputDivContainer.removeChild(inputDivContainer.lastChild);
+    while (messageDivContainer.hasChildNodes()) {
+        messageDivContainer.removeChild(messageDivContainer.lastChild);
+    }
+    var inputDivContainer = document.getElementById("inputDiv");
+    while (inputDivContainer.hasChildNodes()) {
+        inputDivContainer.removeChild(inputDivContainer.lastChild);
     }
 }
 /**
@@ -349,6 +359,61 @@ function hideAllPages() {
 }
 
 /**
+ * Show Statistics
+ */
+function showStatistics(response) {
+    var newArray = [];
+    for (var index = 0; index < response.length; index++) {
+        // console.log(response[index].number);
+        newArray.push(response[index].number);
+
+    }
+
+    console.log(newArray);
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+
+        // The data for our dataset
+        data: {
+            labels: ["Vandaag", "Gisteren", "2 dagen geleden", "3 dagen geleden", "4 dagen geleden", "5 dagen geleden", "6 dagen geleden"],
+            datasets: [{
+                label: ["Aantal geposten messages", ],
+                color: 'rgb(255,0,0)',
+                borderWidth: 10,
+                backgroundColor: 'rgb(0, 0, 0, 0.6)',
+                borderColor: 'rgb(0, 0, 0, 1)',
+                data: [newArray[0], newArray[1], newArray[2], newArray[3], newArray[4], newArray[5], newArray[6]],
+            }]
+        },
+
+        // Configuration options go here
+        options: {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: 'rgb(0,0,0)'
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }]
+
+            }
+
+
+
+        }
+    });
+}
+
+/**
  * Laat de home Pagina zien
  */
 function showHomePage() {
@@ -357,7 +422,7 @@ function showHomePage() {
     hideAllPages();
 
     homePage.style.display = 'block';
-    
+
 }
 
 function showStatisticPage() {
@@ -386,7 +451,7 @@ function showPublicPage() {
     var bootstrap_Page = document.getElementById("bootstrap-name");
     var roomnaam1 = $("#roomnaam1");
 
-    
+
     roomId = 1;
 
     hideAllPages();
@@ -408,7 +473,7 @@ function showPublicPage() {
  * Laat de Html Pagina zien
  */
 function showHtmlPage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -441,7 +506,7 @@ function showHtmlPage() {
 }
 
 function showJavasciptPage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -474,7 +539,7 @@ function showJavasciptPage() {
 }
 
 function showlaravel_lumenPage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -507,7 +572,7 @@ function showlaravel_lumenPage() {
 }
 
 function showFitnessePage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -540,7 +605,7 @@ function showFitnessePage() {
 }
 
 function showMysql_Page() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -573,7 +638,7 @@ function showMysql_Page() {
 }
 
 function showVue_jsPage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -606,7 +671,7 @@ function showVue_jsPage() {
 }
 
 function gitPage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -639,7 +704,7 @@ function gitPage() {
 }
 
 function installationPage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -672,7 +737,7 @@ function installationPage() {
 }
 
 function bootstrapPage() {
-    var page = document.getElementById("alleRoomPages");  
+    var page = document.getElementById("alleRoomPages");
     var htmlPage = document.getElementById("html/css_name");
     var publicPage = document.getElementById('public-name');
     var javascriptPage = document.getElementById("javascript_name");
@@ -684,7 +749,7 @@ function bootstrapPage() {
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
     var roomnaam10 = $("#roomnaam10");
-    
+
 
     roomId = 10;
     reloadMessages();
@@ -737,76 +802,9 @@ function fillMenu() {
 addButtonActions();
 getToken();
 hideAllPages();
+
+
 /**
  * Vraag wouter voor refresh
  */
 //   setInterval(function(){reloadMessages()}, 3000);
-
-
-// function reloadPostMessage(postOneMessage) {
-    
-//     var messagesContaineruserid = document.createElement("p");
-//     messagesContaineruserid.setAttribute("class", "user_id");
-
-//     var messagesUser_type = document.createElement("p");
-//     messagesUser_type.setAttribute("class", "user_type text-center");
-
-//     var messagesContainerdescription = document.createElement("p");
-//     messagesContainerdescription.setAttribute("class", "description");
-
-//     var messagesContainertime = document.createElement("p");
-//     messagesContainertime.setAttribute("class", "time");
-
-//     // Container voor de losse Message
-//     var messagesContainer = document.createElement("div");
-//     messagesContainer.setAttribute("class", "messages");
-
-//     //populates every element with corresponding attribute from api
-//     messagesContaineruserid.innerHTML = postOneMessage.created_at + "," + " " + "(" + postOneMessage.user_id + ")";
-//     messagesUser_type.innerHTML = postOneMessage.user.user_type.name;
-//     messagesContainerdescription.innerHTML = postOneMessage.description;
-
-//     //appends created containers into parent div 
-
-//     messagesContainer.appendChild(messagesContaineruserid);
-//     messagesContainer.appendChild(messagesUser_type);
-//     messagesContainer.appendChild(messagesContainerdescription);
-//     messagesContainer.appendChild(messagesContainertime);
-//     messageDivContainer.appendChild(messagesContainer);
-    
-// }
-
-function showStatistics(response) {
-    var newArray = [];
-    for (var index = 0; index < response.length; index++) {
-        // console.log(response[index].number);
-        newArray.push(response[index].number);
-        
-    }
-
-    console.log(newArray);
-    
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
-
-        // The data for our dataset
-        data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-                label: ["Public",],
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [newArray[0], newArray[1], newArray[2], newArray[3], newArray[4], newArray[5], newArray[6]],
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
-}
-function errorStatistics(statusCode, response) {
-    
-}
-showChart();
