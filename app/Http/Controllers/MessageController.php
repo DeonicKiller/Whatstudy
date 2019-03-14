@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Message;
 use App\Token;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -78,6 +79,13 @@ class MessageController extends Controller
         $message->room;
         return response()->json($message);
     } 
+
+    public function showStatistics()
+    {
+        
+        $messages = DB::table('messages')->select(DB::raw('left(created_at,10) as create_date, count(*) as number') )->groupBy('create_date')->orderByDesc('create_date')->limit(7)->get(); 
+        return response()->json($messages); 
+    }
 
 }
 

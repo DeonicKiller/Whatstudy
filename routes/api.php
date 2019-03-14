@@ -27,7 +27,10 @@ $router->get('rooms/{room}/messages/check/{token}', ['uses' => 'RoomController@s
 $router->get('messages/check/{token}', ['uses' => 'MessageController@showAllMessages']);
 $router->get('messages/{message}/check/{token}', ['uses' => 'MessageController@showOneMessage']);
 $router->post('messages/check/{token}' , ['uses' => 'MessageController@createMessage']);
+$router->get('messages/statistics/check/', ['uses' => 'MessageController@showStatistics']);
+
 
 // UserController
 $router->get('users/check/{token}' , ['uses' => 'UserController@showAllusers']);
 $router->get('users/{user}/check/{token}' , ['uses' => 'UserController@showOneUser']);
+

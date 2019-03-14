@@ -7,6 +7,7 @@ var studentNummer;
 var codeToken = null;
 var localeResponsRooms;
 var roomId;
+var myChart;
 var messagesParentContainer = document.getElementById("alleRoomPages");
 var messageDivContainer = document.getElementById("messagesDiv");
 var inputDivContainer = document.getElementById("inputDiv");
@@ -165,6 +166,7 @@ function addButtonActions() {
 
     statistic_Page.addEventListener("click", function () {
         showStatisticPage();
+        fetchStatistics();
     });
 
     document.addEventListener('click', function (e) {
@@ -218,6 +220,22 @@ function postMessage() {
     };
     var myPostApi = new Api('POST', 'messages/check/' + codeToken.token, send);
     myPostApi.execute(postMessageSucces, errorPostMessage);
+}
+
+/**
+ * Fetch Statitics throught Api
+ */
+function fetchStatistics() {
+    if (codeToken) {
+        var myAPI = new Api("GET");
+        // myAPI.route = "messages/statistics/check/{token}" + codeToken.token;
+        myAPI.route = "messages/statistics/check/";
+        myAPI.data = null;
+        myAPI.execute(showStatistics, errorStatistics);
+    } else {
+        alert("token is er niet");
+    }
+
 }
 
 /*
@@ -758,9 +776,16 @@ hideAllPages();
     
 // }
 
+function showStatistics(response) {
+    var newArray = [];
+    for (var index = 0; index < response.length; index++) {
+        // console.log(response[index].number);
+        newArray.push(response[index].number);
+        
+    }
 
-function showChart() {
-
+    console.log(newArray);
+    
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -773,12 +798,7 @@ function showChart() {
                 label: ["Public",],
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45],
-            }, {
-                label: ["HTML/CSS",],
-                backgroundColor: 'rgb(0,128,0)',
-                borderColor: 'rgb(0,128,0)',
-                data: [0, 10, 5, 2, 20, 30, 45],
+                data: [newArray[0], newArray[1], newArray[2], newArray[3], newArray[4], newArray[5], newArray[6]],
             }]
         },
 
@@ -786,5 +806,7 @@ function showChart() {
         options: {}
     });
 }
-
+function errorStatistics(statusCode, response) {
+    
+}
 showChart();
