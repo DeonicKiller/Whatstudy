@@ -106,7 +106,7 @@ function addButtonActions() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
-    var statistic_Page = document.getElementById("statistic_page");
+    var statistic_Page = $('#statistic_page')[0];
 
     homePage.addEventListener("click", function () {
         showHomePage();
@@ -302,8 +302,29 @@ function hideAllPages() {
     var publicPage = document.getElementById("alleRoomPages");
     var homePage = document.getElementById('homePage');
     var statistic_Page = $("#statisticPage");
+    var roomnaam1 = $("#roomnaam1");
+    var roomnaam2 = $("#roomnaam2");
+    var roomnaam3 = $("#roomnaam3");
+    var roomnaam4 = $("#roomnaam4");
+    var roomnaam5 = $("#roomnaam5");
+    var roomnaam6 = $("#roomnaam6");
+    var roomnaam7 = $("#roomnaam7");
+    var roomnaam8 = $("#roomnaam8");
+    var roomnaam9 = $("#roomnaam9");
+    var roomnaam10 = $("#roomnaam10");
 
-    statistic_Page.css("display", "block");
+    roomnaam1.css("display", "none");
+    roomnaam2.css("display", "none");
+    roomnaam3.css("display", "none");
+    roomnaam4.css("display", "none");
+    roomnaam5.css("display", "none");
+    roomnaam6.css("display", "none");
+    roomnaam6.css("display", "none");
+    roomnaam7.css("display", "none");
+    roomnaam8.css("display", "none");
+    roomnaam9.css("display", "none");
+    roomnaam10.css("display", "none");
+    statistic_Page.css("display", "none");
     publicPage.style.display = 'none';
     homePage.style.display = 'none';
 
@@ -345,6 +366,8 @@ function showPublicPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam1 = $("#roomnaam1");
+
     
     roomId = 1;
 
@@ -361,6 +384,7 @@ function showPublicPage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam1.css("display", "block");
 }
 /**
  * Laat de Html Pagina zien
@@ -377,6 +401,7 @@ function showHtmlPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam2 = $("#roomnaam2");
 
     roomId = 2;
     reloadMessages();
@@ -394,6 +419,7 @@ function showHtmlPage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam2.css("display", "block");
 }
 
 function showJavasciptPage() {
@@ -408,6 +434,7 @@ function showJavasciptPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam3 = $("#roomnaam3");
 
     roomId = 3;
     reloadMessages();
@@ -425,6 +452,7 @@ function showJavasciptPage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam3.css("display", "block");
 }
 
 function showlaravel_lumenPage() {
@@ -439,6 +467,7 @@ function showlaravel_lumenPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam4 = $("#roomnaam4");
 
     roomId = 4;
     reloadMessages();
@@ -456,6 +485,7 @@ function showlaravel_lumenPage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam4.css("display", "block");
 }
 
 function showFitnessePage() {
@@ -470,6 +500,7 @@ function showFitnessePage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam5 = $("#roomnaam5");
 
     roomId = 5;
     reloadMessages();
@@ -487,6 +518,7 @@ function showFitnessePage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam5.css("display", "block");
 }
 
 function showMysql_Page() {
@@ -501,6 +533,7 @@ function showMysql_Page() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam6 = $("#roomnaam6");
 
     roomId = 6;
     reloadMessages();
@@ -518,6 +551,7 @@ function showMysql_Page() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam6.css("display", "block");
 }
 
 function showVue_jsPage() {
@@ -532,6 +566,7 @@ function showVue_jsPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam7 = $("#roomnaam7");
 
     roomId = 7;
     reloadMessages();
@@ -549,6 +584,7 @@ function showVue_jsPage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam7.css("display", "block");
 }
 
 function gitPage() {
@@ -563,6 +599,7 @@ function gitPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam8 = $("#roomnaam8");
 
     roomId = 8;
     reloadMessages();
@@ -580,6 +617,7 @@ function gitPage() {
     git_Page.style.display = 'none';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'block';
+    roomnaam8.css("display", "block");
 }
 
 function installationPage() {
@@ -594,6 +632,7 @@ function installationPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam9 = $("#roomnaam9");
 
     roomId = 9;
     reloadMessages();
@@ -611,6 +650,7 @@ function installationPage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'none';
     bootstrap_Page.style.display = 'block';
+    roomnaam9.css("display", "block");
 }
 
 function bootstrapPage() {
@@ -625,6 +665,7 @@ function bootstrapPage() {
     var git_Page = document.getElementById("git_name");
     var installation_Page = document.getElementById("installation_name");
     var bootstrap_Page = document.getElementById("bootstrap-name");
+    var roomnaam10 = $("#roomnaam10");
     
 
     roomId = 10;
@@ -643,6 +684,7 @@ function bootstrapPage() {
     git_Page.style.display = 'block';
     installation_Page.style.display = 'block';
     bootstrap_Page.style.display = 'none';
+    roomnaam10.css("display", "block");
 }
 
 
