@@ -116,7 +116,7 @@
 <br>
 |click           |xpath=//a[@id='navbarDropdownMenuLink']                 |
 <br>
-|click           |xpath=//a[@id='public-name']                            |
+|click           |xpath=//a[@id='room_link1']                            |
 <br>
 |enter           |FITNESSE-TEST        |as       |id=input_messages       |
 <br>
@@ -153,6 +153,44 @@
 |check   |response status                                                       |200                                                                                                             |
 <br>
 |check   |json path count                                                       |$[*]|>$totaal                                                                                                   |
+</p>
+
+<br>
+<h2>Userstory 5</h2>
+
+<h4>Wisselen van Chatroom</h4>
+<p>
+!|script         |browser test                                            |
+<br>
+|open            |https://epic.clow.nl/login                              |
+<br>
+|enter           |teststudent     |as     |name=_username                 |
+<br>
+|enter           |teststudent     |as     |name=_password                 |
+<br>
+|click           |xpath=(//button[@type='submit'])                        |
+<br>
+|wait for visible|xpath=//a[contains(text(),'Test Student (teststudent)')]|
+<br>
+|open            |https://ori.clow.nl/~s1114352/whatstudy/                |
+<br>
+|wait for visible|xpath=//h2[contains(text(),'welkom Test Student')]      |
+<br>
+|click           |xpath=//span[@class='navbar-toggler-icon']              |
+<br>
+|click           |xpath=//a[@id='navbarDropdownMenuLink']                 |
+<br>
+|click           |xpath=//a[@id='room_link1']                             |
+<br>
+|wait for visible|Public          |in     |xpath=//h1[@id='roomnaam1']    |
+<br>
+|click           |xpath=//span[@class='navbar-toggler-icon']              |
+<br>
+|click           |xpath=//a[@id='navbarDropdownMenuLink']                 |
+<br>
+|click           |xpath=//a[@id='room_link2']                             |
+<br>
+|wait for visible|HTML/CSS        |in     |xpath=//h1[@id='roomnaam2']    |
 </p>
 
 </body>

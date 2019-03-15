@@ -97,6 +97,7 @@ function addButtonActions() {
     var installation_Page = document.getElementById("room_link9");
     var bootstrap_Page = document.getElementById("room_link10");
     var statistic_Page = $('#statistic_page')[0];
+    
 
     homePage.addEventListener("click", function () {
         showHomePage();
@@ -241,10 +242,10 @@ function showRooms(response) {
  * Post Message Succes
  */
 function postMessageSucces(responsePage) {
+    var emptyInput = document.getElementById("input_messages").value;
+    emptyInput.value = "";
     console.info("gelukt");
     console.info(responsePage);
-    var send_Input = document.getElementById("input_messages");
-    send_Input.innerHTML = "";
     // reloadPostMessage(responsePage);
     reloadMessages();
 }
