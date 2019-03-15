@@ -162,6 +162,7 @@ function addButtonActions() {
     document.addEventListener('click', function (e) {
         if (e.target && e.target.id == 'button-send') {
             postMessage();
+            emptyInput();
         }
     });
 
@@ -236,6 +237,14 @@ function showRooms(response) {
     console.log(localeResponsRooms);
     showHomePage();
     fillMenu();
+}
+
+/**
+ * Makes the input field empty again
+ */
+function emptyInput() {
+    var emptyInput = document.getElementById("input_messages");
+    emptyInput.value = "";
 }
 
 /*
