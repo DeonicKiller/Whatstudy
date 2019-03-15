@@ -71,19 +71,6 @@ function showMessages(responsePage) {
 
     }
 
-    var inputContainer = document.createElement("input");
-    inputContainer.setAttribute("id", "input_messages");
-    inputContainer.setAttribute("placeholder", "Typ hier");
-
-    var buttonContainer = document.createElement("BUTTON");
-    buttonContainer.setAttribute("id", "button-send");
-    buttonContainer.setAttribute("class", "btn btn-outline-primary");
-
-    inputDivContainer.appendChild(inputContainer);
-    inputDivContainer.appendChild(buttonContainer);
-
-    buttonContainer.innerHTML = "Send";
-
     $("html, body").animate({
         scrollTop: $(document).height()
     }, "slow");
@@ -594,27 +581,12 @@ function bootstrapPage() {
  * Vult de Rooms in de nav bar
  */
 function fillMenu() {
-    var publicPage = document.getElementById("room_link1");
-    var htmlPage = document.getElementById("room_link2");
-    var javascriptPage = document.getElementById("room_link3");
-    var laravel_lumenPage = document.getElementById("room_link4");
-    var fitnesse_Page = document.getElementById("room_link5");
-    var mysql_Page = document.getElementById("room_link6");
-    var vue_jsPage = document.getElementById("room_link7");
-    var git_Page = document.getElementById("room_link8");
-    var installation_Page = document.getElementById("room_link9");
-    var bootstrap_Page = document.getElementById("room_link10");
+    for (let i = 0; i < localeResponsRooms.length; i++) {
 
-    publicPage.innerHTML = localeResponsRooms[0].name;
-    htmlPage.innerHTML = localeResponsRooms[1].name;
-    javascriptPage.innerHTML = localeResponsRooms[2].name;
-    laravel_lumenPage.innerHTML = localeResponsRooms[3].name;
-    fitnesse_Page.innerHTML = localeResponsRooms[4].name;
-    mysql_Page.innerHTML = localeResponsRooms[5].name;
-    vue_jsPage.innerHTML = localeResponsRooms[6].name;
-    git_Page.innerHTML = localeResponsRooms[7].name;
-    installation_Page.innerHTML = localeResponsRooms[8].name;
-    bootstrap_Page.innerHTML = localeResponsRooms[9].name;
+        var page = document.getElementById(`room_link${i+1}`);
+        page.innerHTML = localeResponsRooms[i].name;
+        
+    }
 }
 
 // initialize
