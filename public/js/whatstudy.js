@@ -96,6 +96,7 @@ function addButtonActions() {
     var git_Page = document.getElementById("room_link8");
     var installation_Page = document.getElementById("room_link9");
     var bootstrap_Page = document.getElementById("room_link10");
+    var refreshButton =$('#refresh_button')[0];
     var statistic_Page = $('#statistic_page')[0];
     
 
@@ -164,6 +165,10 @@ function addButtonActions() {
             postMessage();
             emptyInput();
         }
+    });
+
+    refreshButton.addEventListener("click", function () {
+        reloadMessages();
     });
 
 }
