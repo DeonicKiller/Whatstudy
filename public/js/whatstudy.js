@@ -72,16 +72,15 @@ function showMessages(responsePage) {
 
     }
     // Is dit de notatie ?
+    setInterval(function(){
 
     console.log(responsePage, oldMessages);
 
     if ( JSON.stringify(responsePage) === JSON.stringify(oldMessages)) {
         console.info("dit is niet een nieuw bericht");
-        $("html, body").animate({
-            scrollTop: $(document).height()
-        }, "slow");
 
     } else {
+        
         reloadMessages();
 
         $("html, body").animate({
@@ -91,7 +90,10 @@ function showMessages(responsePage) {
     }
 
     oldMessages = responsePage;
+}, 3000);
 }
+
+
 // Fout bericht als de berichten niet worden opgehaald
 function showMessagesFailed() {
     alert("Het ophalen van de berichten is niet gelukt");
@@ -629,4 +631,3 @@ hideAllPages();
 /**
  * Vraag wouter voor refresh
  */
-//   setInterval(function(){reloadMessages()}, 3000);
