@@ -8,6 +8,7 @@ var codeToken = null;
 var localeResponsRooms;
 var roomId;
 var myChart;
+var oldMessages;
 var messagesParentContainer = document.getElementById("alleRoomPages");
 var messageDivContainer = document.getElementById("messagesDiv");
 var inputDivContainer = document.getElementById("inputDiv");
@@ -70,21 +71,27 @@ function showMessages(responsePage) {
         messageDivContainer.appendChild(messagesContainer);
 
     }
-// Is dit de notatie ?
-    if (responsePage== responsePage) {
+    // Is dit de notatie ?
+
+    console.log(responsePage, oldMessages);
+
+    if ( JSON.stringify(responsePage) === JSON.stringify(oldMessages)) {
         console.info("dit is niet een nieuw bericht");
         $("html, body").animate({
             scrollTop: $(document).height()
         }, "slow");
+
+    } else {
+        reloadMessages();
+
+        $("html, body").animate({
+            scrollTop: $(document).height()
+        }, "slow");
         
-    } else
-    setInterval(function(){ reloadMessages() }, 3000);
+    }
 
-    $("html, body").animate({
-        scrollTop: $(document).height()
-    }, "slow");
+    oldMessages = responsePage;
 }
-
 // Fout bericht als de berichten niet worden opgehaald
 function showMessagesFailed() {
     alert("Het ophalen van de berichten is niet gelukt");
@@ -105,9 +112,9 @@ function addButtonActions() {
     var git_Page = document.getElementById("room_link8");
     var installation_Page = document.getElementById("room_link9");
     var bootstrap_Page = document.getElementById("room_link10");
-    var refreshButton =$('#refresh_button')[0];
+    var refreshButton = $('#refresh_button')[0];
     var statistic_Page = $('#statistic_page')[0];
-    
+
 
     homePage.addEventListener("click", function () {
         showHomePage();
@@ -609,7 +616,7 @@ function fillMenu() {
 
         var page = document.getElementById(`room_link${i+1}`);
         page.innerHTML = localeResponsRooms[i].name;
-        
+
     }
 }
 
