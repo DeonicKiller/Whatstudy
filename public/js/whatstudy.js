@@ -70,6 +70,15 @@ function showMessages(responsePage) {
         messageDivContainer.appendChild(messagesContainer);
 
     }
+// Is dit de notatie ?
+    if (responsePage== responsePage) {
+        console.info("dit is niet een nieuw bericht");
+        $("html, body").animate({
+            scrollTop: $(document).height()
+        }, "slow");
+        
+    } else
+    setInterval(function(){ reloadMessages() }, 3000);
 
     $("html, body").animate({
         scrollTop: $(document).height()
